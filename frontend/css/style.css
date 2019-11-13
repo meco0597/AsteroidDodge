@@ -8,6 +8,7 @@ img {
 
 .card {
 	width: 70%;
+	min-width: 600;
 	margin-right: 15%;
 	margin-left: 15%;
 }
@@ -60,6 +61,7 @@ img {
 }
 
 #game {
+	margin: auto;
 	background-image: url(../images/game_background.jpg);
 }
 

@@ -1,5 +1,6 @@
-$( document ).ready(function() {
-    var windowSize = $(window).width();
+$(document).ready(function() {
+
+  var windowSize = $(window).width();
   if (windowSize < 991) {
     $(".navbar").css("background-color", "black");
     $(".navbar-collapse").css("background-color", "black");

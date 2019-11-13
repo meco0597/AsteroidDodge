@@ -6,6 +6,7 @@ var numAstroids = 5;
 var gameLoop;
 var currentScore;
 var firstTime = true;
+var explosionSound;
 
 // Event listeners for the key functions
 window.addEventListener('keyup', function(event) { Key.onKeyup(event); }, false);
@@ -45,6 +46,7 @@ function onLoad() {
   // This will tie all of this code to the canvas component
   canvas = document.getElementById('game');
   ctx = canvas.getContext('2d');
+  explosionSound = new sound("sounds/explosion.mp3");
 }
 
 /*
@@ -88,6 +90,22 @@ function endgame() {
 function drawCurrentScore() {
   ctx.font = '10px "Press Start 2P"';
   ctx.fillText('Score: ' + currentScore, 10, 30);
+
+}
+
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
 }
 
 /*
@@ -236,6 +254,7 @@ function checkCollisions() {
     dist = Math.sqrt(dx * dx + dy * dy);
     if (dist + 15 < astroid.size/2 + player.width/2)  {
       gameLoop = false;
+      explosionSound.play();
     }
   }
 }
