@@ -9,7 +9,7 @@ var firstTime = true;
 var explosionSound;
 
 // Event listeners for the key functions
-window.addEventListener('keyup', function(event) { Key.onKeyup(event); }, false);
+window.addEventListener('keyup', function (event) { Key.onKeyup(event); }, false);
 window.addEventListener('keydown', function(event) { Key.onKeydown(event); }, false);
 window.addEventListener("load", onLoad);
 
@@ -46,7 +46,7 @@ function onLoad() {
   // This will tie all of this code to the canvas component
   canvas = document.getElementById('game');
   ctx = canvas.getContext('2d');
-  explosionSound = new sound("sounds/explosion.mp3");
+  explosionSound = new sound("../sounds/explosion.mp3");
 }
 
 /*
@@ -126,28 +126,29 @@ function onStartButtonClick() {
   }
 
   var shipImg = new Image();
-  shipImg.src = "images/millennium_falcon.png";
+  shipImg.src = "../images/millennium_falcon.png";
 
   var explosion1 = new Image();
-  explosion1.src = "images/e1.png";
+  explosion1.src = "../images/e1.png";
 
   var explosion2 = new Image();
-  explosion2.src = "images/e2.png";
+  explosion2.src = "../images/e2.png";
 
   var explosion3 = new Image();
-  explosion3.src = "images/e3.png";
+  explosion3.src = "../images/e3.png";
 
   var explosion4 = new Image();
-  explosion4.src = "images/e4.png";
+  explosion4.src = "../images/e4.png";
 
   var explosion5 = new Image();
-  explosion5.src = "images/e5.png";
+  explosion5.src = "../images/e5.png";
 
   var clear = new Image();
-  clear.src = "images/clear.png";
+  clear.src = "../images/clear.png";
 
-  // initialize the player object
-  player = {
+    // initialize the player object
+
+    player = {
     x : canvas.width/2 - 37.5,
     y : canvas.height - 150,
     width : 100,
@@ -304,10 +305,11 @@ function addAstroid() {
   // chooses a random asteroid img
   var num = Math.floor(Math.random() * 3)
   var img = new Image();
-  img.src = "images/astroid" + num + ".png";
+  img.src = "../images/astroid" + num + ".png";
 
-  // create an asteroid object that has a random x, size, velocity, and spinVelocity
-  var astroid = {
+    // create an asteroid object that has a random x, size, velocity, and spinVelocity
+
+    var astroid = {
     x : Math.random() * canvas.width,
     y : -200,
     velocity : Math.random() * 5 + 3,
