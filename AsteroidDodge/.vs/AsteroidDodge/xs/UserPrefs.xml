@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{8A4DA392-5DAE-42F5-A27D-8088172C1C90}|Default">
   <MonoDevelop.Ide.ItemProperties.AsteroidDodge PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AsteroidDodge/Views/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AsteroidDodge/wwwroot/js/window.js">
     <Files>
-      <File FileName="AsteroidDodge/Views/Home/Index.cshtml" Line="5" Column="1" />
-      <File FileName="AsteroidDodge/Views/Shared/_Layout.cshtml" Line="78" Column="4" />
+      <File FileName="AsteroidDodge/Views/Home/Index.cshtml" Line="7" Column="1" />
+      <File FileName="AsteroidDodge/Views/Shared/_Layout.cshtml" Line="9" Column="80" />
       <File FileName="AsteroidDodge/wwwroot/js/game.js" Line="3" Column="11" />
-      <File FileName="AsteroidDodge/wwwroot/js/window.js" Line="27" Column="1" />
+      <File FileName="AsteroidDodge/wwwroot/css/style.css" Line="65" Column="55" />
+      <File FileName="AsteroidDodge/wwwroot/js/window.js" Line="3" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,13 +15,13 @@
             <Node name="AsteroidDodge" expanded="True">
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" selected="True" />
-                </Node>
+                <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True" />
-                <Node name="lib" expanded="True" />
+                <Node name="css" expanded="True" />
+                <Node name="js" expanded="True">
+                  <Node name="window.js" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>

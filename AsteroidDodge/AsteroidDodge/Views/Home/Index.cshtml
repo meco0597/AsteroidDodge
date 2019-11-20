@@ -4,18 +4,23 @@
 
 
 <div class="body-projects">
-	<!-- Game -->
-	<div class="card mb-3">
-		<canvas width="600" height="500" id="game"></canvas>
-		<div style="text-align: center;">
-			<button type="button" id="start-game-button" name="button" onclick="onStartButtonClick()" class="hover-inv rounded">Start</button>
-		</div>
-		<div class="card-body">
-			<h4 class="card-title">Asteroid Dodge</h4>
-			<p class="card-text">
-				You are the pilot of the Millennium Falcon and you're approaching an asteroid belt.
-				Use the left and right arrow keys to avoid the oncoming asteroids and make it as far as you can.
-			</p>
-		</div>
-	</div>
+    <!-- Game -->
+    <canvas width="600" height="500" id="game"></canvas>
+    <div style="text-align: center;">
+        <button type="button" id="start-game-button" name="button" onclick="onStartButtonClick()" class="hover-inv rounded">Start</button>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Asteroids Dodge</h4>
+        <p class="card-text">
+            You are the pilot of the Millennium Falcon and you're approaching an asteroid belt.
+            Use the left and right arrow keys to avoid the oncoming asteroids and make it as far as you can.
+        </p>
+    </div>
 </div>
+
+
+<!-- Javascript files-->
+@section Scripts {
+    <script src="~/js/game.js"></script>
+    <!-- <script src="~/js/window.js"></script> -->
+}
