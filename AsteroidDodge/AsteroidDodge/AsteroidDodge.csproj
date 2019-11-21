@@ -11,4 +11,8 @@
   <ItemGroup>
     <None Remove="Views\Home\index.html" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Leaderboard\" />
+    <Folder Include="Views\Store\" />
+  </ItemGroup>
 </Project>
