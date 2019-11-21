@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{8A4DA392-5DAE-42F5-A27D-8088172C1C90}|Default">
   <MonoDevelop.Ide.ItemProperties.AsteroidDodge PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AsteroidDodge/Views/Store/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AsteroidDodge/wwwroot/js/game.js">
     <Files>
       <File FileName="AsteroidDodge/Views/Home/Index.cshtml" Line="26" Column="2" />
-      <File FileName="AsteroidDodge/Views/Shared/_Layout.cshtml" Line="46" Column="22" />
-      <File FileName="AsteroidDodge/wwwroot/js/game.js" Line="3" Column="11" />
+      <File FileName="AsteroidDodge/Views/Shared/_Layout.cshtml" Line="30" Column="59" />
+      <File FileName="AsteroidDodge/wwwroot/js/game.js" Line="390" Column="55" />
       <File FileName="AsteroidDodge/wwwroot/css/style.css" Line="10" Column="14" />
       <File FileName="AsteroidDodge/wwwroot/js/window.js" Line="14" Column="39" />
       <File FileName="AsteroidDodge/Controllers/LeaderboardController.cs" Line="8" Column="2" />
       <File FileName="AsteroidDodge/Views/Home/Leaderboard.cshtml" Line="1" Column="16" />
       <File FileName="AsteroidDodge/Controllers/HomeController.cs" Line="1" Column="1" />
       <File FileName="AsteroidDodge/Controllers/StoreController.cs" Line="19" Column="1" />
-      <File FileName="AsteroidDodge/Views/Store/Index.cshtml" Line="1" Column="9" />
+      <File FileName="AsteroidDodge/Views/Store/Index.cshtml" Line="1" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,9 +23,13 @@
                 <Node name="Home" expanded="True" />
                 <Node name="Leaderboard" expanded="True" />
                 <Node name="Shared" expanded="True" />
-                <Node name="Store" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
+                <Node name="Store" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="images" expanded="True">
+                  <Node name="crystal.png" selected="True" />
                 </Node>
+                <Node name="js" expanded="True" />
               </Node>
             </Node>
           </Node>
