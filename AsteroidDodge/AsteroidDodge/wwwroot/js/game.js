@@ -47,7 +47,7 @@ function onLoad() {
     canvas = document.getElementById('game');
     ctx = canvas.getContext('2d');
     explosionSound = new sound("../sounds/explosion.mp3");
-    coinSound = new sound("../sounds/coin.mp3");
+    crystalSound = new sound("../sounds/crystal.mp3");
 }
 
 /*
@@ -56,11 +56,11 @@ function onLoad() {
 function updateLoop() {
     if (gameLoop) {
         clear();
-        randomSpawnCoin();
+        randomSpawnCrystal();
         updatePlayerLoc();
         updateStarLoc();
         updateAstroidLoc();
-        updateCoinLoc();
+        updateCrystalLoc();
         checkCollisions();
         drawCurrentScore();
         player.draw();
@@ -75,8 +75,10 @@ function updateLoop() {
 */
 function endgame() {
     clear();
+    randomSpawnCrystal();
     updateStarLoc();
     updateAstroidLoc();
+    updateCrystalLoc();
     if (player.frameid != player.frames.length - 1) {
         player.frameid += 0.25;
         player.draw();
@@ -86,7 +88,7 @@ function endgame() {
         ctx.font = '15px "Press Start 2P"';
         ctx.fillText('Score: ' + currentScore, canvas.width / 2 - 55, canvas.height / 2 + 30);
         ctx.font = '15px "Press Start 2P"';
-        ctx.fillText('Coins: ' + currentCoins, canvas.width / 2 - 65, canvas.height / 2 + 60);
+        ctx.fillText('Crystals: ' + currentCrystals, canvas.width / 2 - 65, canvas.height / 2 + 60);
         ctx.font = '15px "Press Start 2P"';
         ctx.fillText('Press start to play again', canvas.width / 2 - 180, canvas.height / 2 + 90);
     }
@@ -94,7 +96,7 @@ function endgame() {
 
 function drawCurrentScore() {
     ctx.font = '10px "Press Start 2P"';
-    ctx.fillText('Score: ' + currentScore + " Coins: " + currentCoins, 10, 30);
+    ctx.fillText('Score: ' + currentScore + " Crystals: " + currentCrystals, 10, 30);
 
 }
 
@@ -119,10 +121,10 @@ function sound(src) {
 function onStartButtonClick() {
     gameLoop = true;
     currentScore = 0;
-    currentCoins = 0;
+    currentCrystals = 0;
     astroids = [];
     stars = [];
-    coins = [];
+    crystals = [];
 
     for (i = 0; i < numStars; i++) {
         addStar(true);
@@ -254,15 +256,17 @@ function updateAstroidLoc() {
 * Helper method that updates the location and orientation of the
 * astroids each frame
 */
-function updateCoinLoc() {
-    for (i = 0; i < coins.length; i++) {
-        var coin = coins[i];
-        if (coin.y > canvas.height) {
-            coins.splice(i, 1);
+function updateCrystalLoc() {
+    for (i = 0; i < crystals.length; i++) {
+        var crystal = crystals[i];
+        if (crystal.y > canvas.height) {
+            crystals.splice(i, 1);
             i--;
         } else {
-            coin.y += coin.velocity;
-            coin.draw();
+            crystal.y += crystal.yvelocity;
+            crystal.x += crystal.xvelocity;
+            crystal.angle += crystal.spinVelocity;
+            crystal.draw();
         }
     }
 }
@@ -283,15 +287,15 @@ function checkCollisions() {
             explosionSound.play();
         }
     }
-    for (i = 0; i < coins.length; i++) {
-        var coin = coins[i];
-        if (!coin.collided) {
-            dx = Math.abs((coin.x + coin.size / 2) - (player.x + player.width / 2)) + 20;
-            dy = Math.abs((coin.y + coin.size / 2) - (player.y + player.height / 2));
+    for (i = 0; i < crystals.length; i++) {
+        var crystal = crystals[i];
+        if (!crystal.collided) {
+            dx = Math.abs((crystal.x + crystal.size / 2) - (player.x + player.width / 2)) + 20;
+            dy = Math.abs((crystal.y + crystal.size / 2) - (player.y + player.height / 2));
             dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist + 15 < coin.size / 2 + player.width / 2) {
-                coin.collected();
-                currentCoins++;
+            if (dist + 15 < crystal.size / 2 + player.width / 2) {
+                crystal.collected();
+                currentCrystals++;
             }
         }
     }
@@ -362,31 +366,33 @@ function addAstroid() {
 }
 
 /*
- * function to randomly spawn coins
+ * function to randomly spawn crystals
  */
-function randomSpawnCoin() {
-    var num = Math.floor(Math.random() * 200);
+function randomSpawnCrystal() {
+    var num = Math.floor(Math.random() * 150);
     if (num == 100) {
-        addCoin();
+        addCrystal();
     }
 }
 
 /*
-* Adds a random coin to the coins list
+* Adds a random crystal to the crystals list
 */
-function addCoin() {
+function addCrystal() {
     var img = new Image();
-    img.src = "../images/coin.png";
+    img.src = "../images/crystal.png";
 
     // create an asteroid object that has a random x, size, velocity, and spinVelocity
 
-    var coin = {
+    var crystal = {
         x: Math.random() * canvas.width,
         y: -200,
-        velocity: 5.5,
+        yvelocity: 5.5,
+        xvelocity: (Math.random() + -0.5) * 3, 
         sprite: img,
+        spinVelocity: Math.random() * (Math.PI / 180),
         angle: 0,
-        size: 40,
+        size: 30,
         collided: false,
         draw: function () {
             rotateAndPaintImage(ctx, this.sprite, this.angle, this.x, this.y, this.size, this.size);
@@ -395,10 +401,16 @@ function addCoin() {
             this.collided = true;
             this.sprite = new Image();
             this.sprite.src = "../images/plusOne.png";
-            coinSound.play();
+            this.spinVelocity = 0;
+            this.angle = 0;
+            this.xvelocity = 0;
+            this.draw = function () {
+                rotateAndPaintImage(ctx, this.sprite, this.angle, this.x, this.y, 40, 40);
+            },
+            crystalSound.play();
         }
     };
-    coins.push(coin);
+    crystals.push(crystal);
 }
 
 /*
