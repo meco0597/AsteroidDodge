@@ -1,1 +1,30 @@
-﻿<h1>Leaderboard</h1>
+﻿@model Dictionary<string, int>
+
+<h1>Leaderboard</h1>
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Score</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            int count = 0;
+        }
+        @foreach (string username in Model.Keys)
+        {
+            count++;
+            var name = username;
+            var score = Model[username];
+
+            <tr>
+                <th scope="row">@count</th>
+                <td>@name</td>
+                <td>@score</td>
+            </tr>
+        }
+    </tbody>
+</table>
