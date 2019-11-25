@@ -135,7 +135,7 @@ function onStartButtonClick() {
     }
 
     var shipImg = new Image();
-    shipImg.src = "../images/millennium_falcon.png";
+    shipImg.src = "../images/s1.png";
 
     var explosion1 = new Image();
     explosion1.src = "../images/e1.png";
@@ -158,10 +158,10 @@ function onStartButtonClick() {
     // initialize the player object
 
     player = {
-        x: canvas.width / 2 - 37.5,
+        x: canvas.width / 2 - 30,
         y: canvas.height - 150,
-        width: 100,
-        height: 125,
+        width: 60,
+        height: 60,
         angle: Math.PI / 2,
         velocityx: 0,
         rotatingLeft: false,
@@ -170,6 +170,10 @@ function onStartButtonClick() {
         frameid: 0,
         thrust: 0.1,
         draw: function () {
+            if (this.frameid > 1) {
+                this.width = 75;
+                this.height = 75;
+            }
             rotateAndPaintImage(ctx, this.frames[Math.floor(this.frameid)], this.angle, this.x, this.y, this.width, this.height);
         }
     };
@@ -279,10 +283,7 @@ function updateCrystalLoc() {
 function checkCollisions() {
     for (i = 0; i < astroids.length; i++) {
         var astroid = astroids[i];
-        dx = Math.abs((astroid.x + astroid.size / 2) - (player.x + player.width / 2)) + 20;
-        dy = Math.abs((astroid.y + astroid.size / 2) - (player.y + player.height / 2));
-        dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist + 15 < astroid.size / 2 + player.width / 2) {
+        if (checkSingleCollision(player.x, player.y, player.width, player.height, astroid.x, astroid.y, astroid.size, astroid.size, 30)) {
             gameLoop = false;
             explosionSound.play();
         }
@@ -290,14 +291,23 @@ function checkCollisions() {
     for (i = 0; i < crystals.length; i++) {
         var crystal = crystals[i];
         if (!crystal.collided) {
-            dx = Math.abs((crystal.x + crystal.size / 2) - (player.x + player.width / 2)) + 20;
-            dy = Math.abs((crystal.y + crystal.size / 2) - (player.y + player.height / 2));
-            dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist + 15 < crystal.size / 2 + player.width / 2) {
+            if (checkSingleCollision(player.x, player.y, player.width, player.height, crystal.x, crystal.y, crystal.size, crystal.size, 5)) {
                 crystal.collected();
                 currentCrystals++;
             }
         }
+    }
+}
+
+function checkSingleCollision(x1, y1, width1, height1, x2, y2, width2, height2, pixelDiff) {
+    var realx1 = x1 + (width1 / 2);
+    var realy1 = y1 + (height1 / 2);
+    var realx2 = x2 + (width2 / 2);
+    var realy2 = y2 + (height2 / 2);
+    if (Math.abs(realx1 - realx2) < ((width1 / 2 + width2 / 2) - pixelDiff) && Math.abs(realy1 - realy2) < ((height1 / 2 + height2 / 2) - pixelDiff)) {
+        return true;
+    } else {
+        return false;
     }
 }
 
