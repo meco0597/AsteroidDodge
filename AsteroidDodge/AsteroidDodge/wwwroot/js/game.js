@@ -135,7 +135,14 @@ function onStartButtonClick() {
     }
 
     var shipImg = new Image();
-    shipImg.src = "../images/s1.png";
+    //shipImg.src = "../images/s1.png";
+    //shipImg.src = "../images/s2.png";
+    //shipImg.src = "../images/s3.png";
+    //shipImg.src = "../images/s4.png";
+    //shipImg.src = "../images/s5.png";
+    //shipImg.src = "../images/s6.png";
+    shipImg.src = "../images/s7.png";
+
 
     var explosion1 = new Image();
     explosion1.src = "../images/e1.png";

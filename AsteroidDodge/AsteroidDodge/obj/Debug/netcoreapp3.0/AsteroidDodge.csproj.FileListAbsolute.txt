@@ -9,7 +9,6 @@
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/bin/Debug/netcoreapp3.0/AsteroidDodge.pdb
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/bin/Debug/netcoreapp3.0/AsteroidDodge.Views.dll
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/bin/Debug/netcoreapp3.0/AsteroidDodge.Views.pdb
-/Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/AsteroidDodge.csprojAssemblyReference.cache
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/staticwebassets/AsteroidDodge.StaticWebAssets.Manifest.cache
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/staticwebassets/AsteroidDodge.StaticWebAssets.xml
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/AsteroidDodge.MvcApplicationPartsAssemblyInfo.cache
@@ -22,9 +21,11 @@
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/AsteroidDodge.RazorCoreGenerate.cache
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/Home/Index.cshtml.g.cs
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/Home/Privacy.cshtml.g.cs
+/Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/Leaderboard/Index.cshtml.g.cs
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/Shared/Error.cshtml.g.cs
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_Layout.cshtml.g.cs
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs
+/Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/Store/Index.cshtml.g.cs
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/_ViewImports.cshtml.g.cs
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/_ViewStart.cshtml.g.cs
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/AsteroidDodge.RazorTargetAssemblyInfo.cache
@@ -33,5 +34,4 @@
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/AsteroidDodge.dll
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/AsteroidDodge.pdb
 /Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/AsteroidDodge.csproj.CopyComplete
-/Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/Leaderboard/Index.cshtml.g.cs
-/Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/Razor/Views/Store/Index.cshtml.g.cs
+/Users/melvinbosnjak/AsteroidDodge/AsteroidDodge/AsteroidDodge/obj/Debug/netcoreapp3.0/AsteroidDodge.csprojAssemblyReference.cache
