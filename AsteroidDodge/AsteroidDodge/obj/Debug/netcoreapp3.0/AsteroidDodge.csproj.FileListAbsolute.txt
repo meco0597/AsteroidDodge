@@ -194,7 +194,6 @@ C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodg
 C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.cshtml.g.cs
 C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\ShowRecoveryCodes.cshtml.g.cs
 C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\TwoFactorAuthentication.cshtml.g.cs
-C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
 C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
 C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\_StatusMessage.cshtml.g.cs
 C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
@@ -210,3 +209,4 @@ C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodg
 C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\Zane_Yarbrough\Documents\HOMEWORK\Space Game\AsteroidDodge\AsteroidDodge\AsteroidDodge\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_Layout.cshtml.g.cs
