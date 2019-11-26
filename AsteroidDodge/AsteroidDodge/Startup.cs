@@ -24,6 +24,7 @@ namespace AsteroidDodge
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddMvc(option => option.EnableEndpointRouting = false);
 
         }
 
@@ -47,6 +48,7 @@ namespace AsteroidDodge
 
             app.UseAuthorization();
             app.UseAuthentication();
+            app.UseMvc();
 
             app.UseEndpoints(endpoints =>
             {
