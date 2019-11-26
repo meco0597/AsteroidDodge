@@ -32,7 +32,7 @@ namespace AsteroidDodge.Data
                     {UserName = "Player2@utah.edu", Email = "Player2@utah.edu", EmailConfirmed = true},
                 new IdentityUser()
                     {UserName = "Player3@utah.edu", Email = "Player3@utah.edu", EmailConfirmed = true}
-            };gfh
+            };
 
             foreach (var player in players)
             {
