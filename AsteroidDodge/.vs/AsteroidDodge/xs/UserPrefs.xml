@@ -1,36 +1,25 @@
 ﻿<Properties StartupConfiguration="{8A4DA392-5DAE-42F5-A27D-8088172C1C90}|Default">
   <MonoDevelop.Ide.ItemProperties.AsteroidDodge PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AsteroidDodge/wwwroot/js/game.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AsteroidDodge/Controllers/StoreController.cs">
     <Files>
-      <File FileName="AsteroidDodge/Views/Home/Index.cshtml" Line="26" Column="2" />
-      <File FileName="AsteroidDodge/Views/Shared/_Layout.cshtml" />
-      <File FileName="AsteroidDodge/wwwroot/js/game.js" Line="144" Column="47" />
-      <File FileName="AsteroidDodge/wwwroot/css/style.css" />
-      <File FileName="AsteroidDodge/wwwroot/js/window.js" />
-      <File FileName="AsteroidDodge/Controllers/LeaderboardController.cs" />
-      <File FileName="AsteroidDodge/Controllers/HomeController.cs" />
-      <File FileName="AsteroidDodge/Controllers/StoreController.cs" />
-      <File FileName="AsteroidDodge/Views/Store/Index.cshtml" />
+      <File FileName="AsteroidDodge/Views/Store/Index.cshtml" Line="78" Column="41" />
+      <File FileName="AsteroidDodge/wwwroot/css/site.css" Line="87" Column="15" />
+      <File FileName="AsteroidDodge/Controllers/StoreController.cs" Line="20" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="AsteroidDodge" expanded="True">
             <Node name="AsteroidDodge" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="StoreController.cs" selected="True" />
+              </Node>
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
-                <Node name="Leaderboard" expanded="True" />
-                <Node name="Shared" expanded="True" />
                 <Node name="Store" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
                 <Node name="images" expanded="True" />
-                <Node name="js" expanded="True">
-                  <Node name="game.js" selected="True" />
-                </Node>
-                <Node name="sounds" expanded="True" />
               </Node>
             </Node>
           </Node>
