@@ -1,1 +1,145 @@
-﻿<h1>Store</h1>
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <title>Store.</title>
+    <meta name="author" content="Samuel Bridge">
+    <meta name="description" content="Asteroid Dodge">
+    <meta name="keywords" content="HTML,CSS">
+</head>
+
+<h1>Store</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Skins
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>
+                    <div id="container">
+                        <img src="~/images/s1.png" alt="" />
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" onclick="skinchange('1')" class="custom-control-input" id="">
+                        <label class="custom-control-label" for=""></label>
+                    </div>
+                </td>
+                <td>
+                    <div id="container">
+                        <img src="~/images/s2.png" alt="" />
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" onclick="skinchange('2')" class="custom-control-input" id="">
+                        <label class="custom-control-label" for=""></label>
+                    </div>
+                </td>
+                <td>
+                    <div id="container">
+                        <img src="~/images/s3.png" alt="" />
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" onclick="skinchange('3')" class="custom-control-input" id="">
+                        <label class="custom-control-label" for=""></label>
+                    </div>
+                </td>
+                <td>
+                    <div id="container">
+                        <img src="~/images/s4.png" alt="" />
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" onclick="skinchange('4')" class="custom-control-input" id="">
+                        <label class="custom-control-label" for=""></label>
+                    </div>
+                </td>
+                <td>
+                    <div id="container">
+                        <img src="~/images/s5.png" alt="" />
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" onclick="skinchange('5')" class="custom-control-input" id="">
+                        <label class="custom-control-label" for=""></label>
+                    </div>
+                </td>
+                <td>
+                    <div id="container">
+                        <img src="~/images/s6.png" alt="" />
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" onclick="skinchange('6')" class="custom-control-input" id="">
+                        <label class="custom-control-label" for=""></label>
+                    </div>
+                </td>
+                <td>
+                    <div id="container">
+                        <img src="~/images/s7.png" alt="" />
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" onclick="skinchange('7')" class="custom-control-input" id="">
+                        <label class="custom-control-label" for=""></label>
+                    </div>
+                </td>
+            </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Maps
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>
+                    <div id="container2">
+                        <img src="~/images/game_background.jpg" alt="" />
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="">
+                        <label class="custom-control-label" for=""></label>
+                    </div>
+                </td>
+                <td>
+                    <div id="container2">
+                        <img src="~/images/game_background.jpg" alt="" />
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="">
+                        <label class="custom-control-label" for=""></label>
+                    </div>
+                </td>
+                <td>
+                    <div id="container2">
+                        <img src="~/images/game_background.jpg" alt="" />
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="">
+                        <label class="custom-control-label" for=""></label>
+                    </div>
+                </td>
+            </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    (function() {
+
+    var img = document.getElementById('container').firstChild;
+    img.onload = function() {
+        if(img.height > img.width) {
+            img.height = '100%';
+            img.width = 'auto';
+        }
+    };
+
+    }());
+</script>
+
+
