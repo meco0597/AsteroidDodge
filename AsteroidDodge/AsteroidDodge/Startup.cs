@@ -24,6 +24,7 @@ namespace AsteroidDodge
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +46,7 @@ namespace AsteroidDodge
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
@@ -52,6 +54,7 @@ namespace AsteroidDodge
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }
