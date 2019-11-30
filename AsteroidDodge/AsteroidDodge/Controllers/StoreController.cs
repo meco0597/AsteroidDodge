@@ -76,14 +76,13 @@ namespace AsteroidDodge.Controllers
 
             if (shipSkin != null &&
                 curUser != null &&
-                //curUser.OwnedShips.ToList().Exists(os => os.ShipSkin == shipSkin) &&
                 curUser.Coins >= shipSkin.SkinCost)
             {
                 // Adjust users coins and add ship to database
                 AdjustCoins(curUser, shipSkin.SkinCost);
 
                 OwnedShip purchasedShip = new OwnedShip { AsteroidUser = curUser, ShipSkinId = shipSkin.ShipSkinId };
-                //curUser.OwnedShips.Add(purchasedShip);
+                _context.OwnedShips.Add(purchasedShip);
                 _context.Users.Update(curUser);
                 _context.SaveChanges();
 
