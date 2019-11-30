@@ -36,7 +36,8 @@ namespace AsteroidDodge.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <param name="deltaCoins"></param>
-        public void AdjustCoins(AsteroidUser user, int deltaCoins)
+        [HttpPost]
+        public async Task<IActionResult> AdjustCoins(AsteroidUser user, int deltaCoins)
         {
             user.Coins += deltaCoins;
             if (user.Coins < 0)
@@ -44,6 +45,8 @@ namespace AsteroidDodge.Controllers
 
             _context.Users.Update(user);
             _context.SaveChanges();
+
+            return new JsonResult(new { success = true });
         }
 
 
