@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AsteroidDodge.Models;
+using AsteroidDodge.Models.Store;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static AsteroidDodge.Models.Store.StoreModel;
 
 namespace AsteroidDodge.Controllers
 {
@@ -18,18 +20,28 @@ namespace AsteroidDodge.Controllers
         {
             _context = context;
             _userManager = userManager;
-
-            // Pre-fetch owned ships and backgrounds 
-            //_userManager.Users
-                //.Include(u => u.OwnedShips.Select(os => os.ShipSkin));
-                //.Include(u => u.OwnedBackgrounds.Select(bg => bg.BackgroundSkin));
         }
 
         /// <summary>
-        /// Helper method to get current user
+        /// Helper method to get current user with ship and background data fetched
         /// </summary>
         /// <returns></returns>
-        private Task<AsteroidUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        public AsteroidUser GetCurrentUser()
+        {
+            return _userManager.Users
+                    .FirstOrDefault(u => u.Email == HttpContext.User.Identity.Name);
+        }
+
+        public int GetCurrentCoins()
+        {
+            return GetCurrentUser().Coins;
+        }
+
+
+        // ==================================================================================
+        // POST METHODS 
+        // ==================================================================================
+
 
         /// <summary>
         /// Helper method to adjust a user's coins 
@@ -37,7 +49,7 @@ namespace AsteroidDodge.Controllers
         /// <param name="user"></param>
         /// <param name="deltaCoins"></param>
         [HttpPost]
-        public async Task<IActionResult> AdjustCoins(AsteroidUser user, int deltaCoins)
+        public IActionResult AdjustCoins(AsteroidUser user, int deltaCoins)
         {
             user.Coins += deltaCoins;
             if (user.Coins < 0)
@@ -49,26 +61,18 @@ namespace AsteroidDodge.Controllers
             return new JsonResult(new { success = true });
         }
 
-
-        // GET: /Store/
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-
         /// <summary>
         /// POST: /Store/PurchaseShip
         /// </summary>
         /// <param name="shipSkinName"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> PurchaseShip(string shipSkinName)
+        public IActionResult PurchaseShip(string shipSkinName)
         {
             bool result = false;
 
             ShipSkin shipSkin = _context.ShipSkins.FirstOrDefault(s => s.SkinName == shipSkinName);
-            AsteroidUser curUser = await GetCurrentUserAsync();
+            AsteroidUser curUser = GetCurrentUser();
 
             if (shipSkin != null &&
                 curUser != null &&
@@ -78,7 +82,7 @@ namespace AsteroidDodge.Controllers
                 // Adjust users coins and add ship to database
                 AdjustCoins(curUser, shipSkin.SkinCost);
 
-                OwnedShip purchasedShip = new OwnedShip { AsteroidUser = curUser, ShipSkinId = shipSkin.ShipSkinId};
+                OwnedShip purchasedShip = new OwnedShip { AsteroidUser = curUser, ShipSkinId = shipSkin.ShipSkinId };
                 //curUser.OwnedShips.Add(purchasedShip);
                 _context.Users.Update(curUser);
                 _context.SaveChanges();
@@ -87,7 +91,56 @@ namespace AsteroidDodge.Controllers
                 result = true;
             }
 
-            return new JsonResult(new { success = result});
+            return new JsonResult(new { success = result });
         }
+
+
+        // GET: /Store/
+        public IActionResult Index()
+        {
+            AsteroidUser user = GetCurrentUser();
+
+            // Get all of the user's owned ship objects
+            List<OwnedShip> ownedShips = _context.OwnedShips
+                .Include(os => os.ShipSkin)
+                .Where(os => os.AsteroidUserId == user.Id)
+                .ToList();
+
+            // Next loop through and add ships
+            List<StoreShip> storeShips = new List<StoreShip>();
+            foreach (var ship in _context.ShipSkins)
+            {
+                // Set ship to purchased if user has it
+                bool isPurchased = ownedShips
+                    .Exists(os => os.ShipSkin == ship);
+
+                StoreShip ss = new StoreShip { ShipSkin = ship, IsPurchased = isPurchased};
+                storeShips.Add(ss);
+            }
+
+
+            // Get all of the user's owned background skin objects
+            List<OwnedBackground> ownedBkgnds = _context.OwnedBackgrounds
+                .Include(ob => ob.BackgroundSkin)
+                .Where(ob => ob.AsteroidUserId == user.Id)
+                .ToList();
+
+            // Loop through and add bkgrnds
+            List<StoreBackground> storeBackgrounds = new List<StoreBackground>();
+            foreach (var bkgrnd in _context.BackgroundSkins)
+            {
+                // Set background to purchased if user has it
+                bool isPurchased = ownedBkgnds
+                    .Exists(ob => ob.BackgroundSkin == bkgrnd);
+
+                StoreBackground sb = new StoreBackground { BackgroundSkin = bkgrnd, IsPurchased = isPurchased};
+                storeBackgrounds.Add(sb);
+            }
+
+            // Build model and return to view
+            return View(new StoreModel { User = user, StoreShips = storeShips, StoreBackgrounds = storeBackgrounds } );
+        }
+
+
     }
 }

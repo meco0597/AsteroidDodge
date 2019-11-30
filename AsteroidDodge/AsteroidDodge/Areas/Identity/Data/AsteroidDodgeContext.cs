@@ -32,31 +32,6 @@ namespace AsteroidDodge.Models
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
-
-            //builder.Entity<OwnedShip>(entity =>
-            //{
-            //    entity.HasKey(os => new { os.AsteroidUserId, os.ShipSkinId });
-            //    entity.HasOne("AsteroidUser");
-            //    entity.HasOne("ShipSkin");
-            //});
-
-            //builder.Entity<ShipSkin>(entity =>
-            //{
-            //    entity.HasOne("ShipSkin");
-            //});
-
-            //builder.Entity<AsteroidUser>(entity =>
-            //{
-            //    entity.HasMany("OwnedShip");
-            //});
-
-            //builder.Entity<OwnedShip>()
-            //    .HasKey(os => new { os.OwnedShipId });
-
-
-            //builder.Entity<OwnedBackground>()
-            //    .HasKey(ob => new { ob.OwnedBackgroundId });
-
        }
     }
 }

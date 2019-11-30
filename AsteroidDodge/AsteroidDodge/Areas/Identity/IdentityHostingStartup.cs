@@ -26,6 +26,7 @@ namespace AsteroidDodge.Areas.Identity
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
             });
+
         }
     }
 }

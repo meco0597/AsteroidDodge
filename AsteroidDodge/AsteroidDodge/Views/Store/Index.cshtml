@@ -1,4 +1,6 @@
-﻿@{
+﻿@model AsteroidDodge.Models.Store.StoreModel
+
+@{
     ViewData["Title"] = "Index";
 }
 <head>
@@ -19,71 +21,31 @@
         </tr>
     </thead>
     <tbody>
-            <tr>
+        <tr>
+            @foreach (var ship in Model.StoreShips)
+            {
                 <td>
-                    <div id="container">
-                        <img src="~/images/s1.png" alt="" />
+                    <div class="ship-container">
+                        <img src="@ship.ShipSkin.SkinImgLocation" alt="@ship.ShipSkin.SkinName" />
                     </div>
+                    @if(ship.IsPurchased)
+                    {
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="skinchange('1')" class="custom-control-input" id="">
+                        <input type="checkbox" onclick="skinchange(@ship.ShipSkin.ShipSkinId)" class="custom-control-input" id="">
                         <label class="custom-control-label" for=""></label>
                     </div>
+                    }
+                    else
+                    {
+                    <div class="">
+                        <label>@ship.ShipSkin.SkinCost Coins</label>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Purchase</button>
+                    </div>
+                    }
                 </td>
-                <td>
-                    <div id="container">
-                        <img src="~/images/s2.png" alt="" />
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="skinchange('2')" class="custom-control-input" id="">
-                        <label class="custom-control-label" for=""></label>
-                    </div>
-                </td>
-                <td>
-                    <div id="container">
-                        <img src="~/images/s3.png" alt="" />
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="skinchange('3')" class="custom-control-input" id="">
-                        <label class="custom-control-label" for=""></label>
-                    </div>
-                </td>
-                <td>
-                    <div id="container">
-                        <img src="~/images/s4.png" alt="" />
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="skinchange('4')" class="custom-control-input" id="">
-                        <label class="custom-control-label" for=""></label>
-                    </div>
-                </td>
-                <td>
-                    <div id="container">
-                        <img src="~/images/s5.png" alt="" />
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="skinchange('5')" class="custom-control-input" id="">
-                        <label class="custom-control-label" for=""></label>
-                    </div>
-                </td>
-                <td>
-                    <div id="container">
-                        <img src="~/images/s6.png" alt="" />
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="skinchange('6')" class="custom-control-input" id="">
-                        <label class="custom-control-label" for=""></label>
-                    </div>
-                </td>
-                <td>
-                    <div id="container">
-                        <img src="~/images/s7.png" alt="" />
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="skinchange('7')" class="custom-control-input" id="">
-                        <label class="custom-control-label" for=""></label>
-                    </div>
-                </td>
-            </tr>
+
+            }
+        </tr>
     </tbody>
 </table>
 
