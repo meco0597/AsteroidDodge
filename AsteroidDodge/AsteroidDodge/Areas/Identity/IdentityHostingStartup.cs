@@ -18,8 +18,13 @@ namespace AsteroidDodge.Areas.Identity
                 services.AddDbContext<AsteroidDodgeContext>(options =>
                     options.UseSqlite("Data Source=./Database/AsteroidDodgeDatabase.db"));
 
-                services.AddDefaultIdentity<AsteroidUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<AsteroidDodgeContext>();
+                services.AddDefaultIdentity<AsteroidUser>(options =>
+                {
+                    options.User.RequireUniqueEmail = true;
+                })
+                .AddEntityFrameworkStores<AsteroidDodgeContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
             });
         }
     }

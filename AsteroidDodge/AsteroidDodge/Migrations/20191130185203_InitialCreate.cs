@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AsteroidDodge.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,7 +40,7 @@ namespace AsteroidDodge.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    Coins = table.Column<uint>(nullable: false)
+                    Coins = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,7 +54,7 @@ namespace AsteroidDodge.Migrations
                     BackgroundSkinId = table.Column<int>(nullable: false),
                     SkinName = table.Column<string>(nullable: true),
                     SkinImgLocation = table.Column<string>(nullable: true),
-                    SkinCost = table.Column<uint>(nullable: false)
+                    SkinCost = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,7 +68,7 @@ namespace AsteroidDodge.Migrations
                     ShipSkinId = table.Column<int>(nullable: false),
                     SkinName = table.Column<string>(nullable: true),
                     SkinImgLocation = table.Column<string>(nullable: true),
-                    SkinCost = table.Column<uint>(nullable: false)
+                    SkinCost = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -188,7 +188,7 @@ namespace AsteroidDodge.Migrations
                     OwnedBackgroundId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     AsteroidUserId = table.Column<string>(nullable: true),
-                    BackgroundSkinId = table.Column<int>(nullable: true)
+                    BackgroundSkinId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -204,7 +204,7 @@ namespace AsteroidDodge.Migrations
                         column: x => x.BackgroundSkinId,
                         principalTable: "BackgroundSkins",
                         principalColumn: "BackgroundSkinId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,7 +214,7 @@ namespace AsteroidDodge.Migrations
                     OwnedShipId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     AsteroidUserId = table.Column<string>(nullable: true),
-                    ShipSkinId = table.Column<int>(nullable: true)
+                    ShipSkinId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -230,7 +230,7 @@ namespace AsteroidDodge.Migrations
                         column: x => x.ShipSkinId,
                         principalTable: "ShipSkins",
                         principalColumn: "ShipSkinId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

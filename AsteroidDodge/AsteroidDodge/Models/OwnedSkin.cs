@@ -12,16 +12,34 @@ namespace AsteroidDodge.Models
     /// </summary>
     public class OwnedShip 
     {
+        [Key]
         public int OwnedShipId { get; set; }
 
-        public virtual AsteroidUser AsteroidUser { get; set; }
-        public virtual ShipSkin ShipSkin { get; set; }
+
+        public string AsteroidUserId { get; set; }
+
+        [ForeignKey("AsteroidUserId")]
+        public AsteroidUser AsteroidUser { get; set; }
+
+        public int ShipSkinId { get; set; }
+
+        [ForeignKey("ShipSkinId")]
+        public ShipSkin ShipSkin { get; set; }
     }
     public class OwnedBackground
     {
+        [Key]
         public int OwnedBackgroundId { get; set; }
 
-        public virtual AsteroidUser AsteroidUser { get; set; }
-        public virtual BackgroundSkin BackgroundSkin { get; set; }
+
+        public string AsteroidUserId { get; set; }
+
+        [ForeignKey("AsteroidUserId")]
+        public AsteroidUser AsteroidUser { get; set; }
+
+        public int BackgroundSkinId { get; set; }
+
+        [ForeignKey("BackgroundSkinId")]
+        public BackgroundSkin BackgroundSkin { get; set; }
     }
 }

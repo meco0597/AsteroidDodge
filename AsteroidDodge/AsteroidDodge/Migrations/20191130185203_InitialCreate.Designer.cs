@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AsteroidDodge.Migrations
 {
     [DbContext(typeof(AsteroidDodgeContext))]
-    [Migration("20191127223012_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20191130185203_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,7 @@ namespace AsteroidDodge.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
 
-                    b.Property<uint>("Coins")
+                    b.Property<int>("Coins")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -90,7 +90,7 @@ namespace AsteroidDodge.Migrations
                     b.Property<int>("BackgroundSkinId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<uint>("SkinCost")
+                    b.Property<int>("SkinCost")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SkinImgLocation")
@@ -113,7 +113,7 @@ namespace AsteroidDodge.Migrations
                     b.Property<string>("AsteroidUserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("BackgroundSkinId")
+                    b.Property<int>("BackgroundSkinId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("OwnedBackgroundId");
@@ -134,7 +134,7 @@ namespace AsteroidDodge.Migrations
                     b.Property<string>("AsteroidUserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ShipSkinId")
+                    b.Property<int>("ShipSkinId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("OwnedShipId");
@@ -151,7 +151,7 @@ namespace AsteroidDodge.Migrations
                     b.Property<int>("ShipSkinId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<uint>("SkinCost")
+                    b.Property<int>("SkinCost")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SkinImgLocation")
@@ -304,8 +304,10 @@ namespace AsteroidDodge.Migrations
                         .HasForeignKey("AsteroidUserId");
 
                     b.HasOne("AsteroidDodge.Models.BackgroundSkin", "BackgroundSkin")
-                        .WithMany("OwnedBackgrounds")
-                        .HasForeignKey("BackgroundSkinId");
+                        .WithMany()
+                        .HasForeignKey("BackgroundSkinId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AsteroidDodge.Models.OwnedShip", b =>
@@ -315,8 +317,10 @@ namespace AsteroidDodge.Migrations
                         .HasForeignKey("AsteroidUserId");
 
                     b.HasOne("AsteroidDodge.Models.ShipSkin", "ShipSkin")
-                        .WithMany("OwnedShips")
-                        .HasForeignKey("ShipSkinId");
+                        .WithMany()
+                        .HasForeignKey("ShipSkinId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
