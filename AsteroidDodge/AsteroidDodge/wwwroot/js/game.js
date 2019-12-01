@@ -293,6 +293,19 @@ function checkCollisions() {
         if (checkSingleCollision(player.x, player.y, player.width, player.height, astroid.x, astroid.y, astroid.size, astroid.size, 30)) {
             gameLoop = false;
             explosionSound.play();
+            // Store all of the appropriate information to the database
+            $.ajax({
+                url: "/Store/AdjustCoins",
+                method: "POST",
+                data: { deltaCoins: currentCrystals }
+            }).done(function (result) {
+                console.log("Successfully posted Crystal amount: " + currentCrystals);
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.log("failed: ");
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+            });
         }
     }
     for (i = 0; i < crystals.length; i++) {

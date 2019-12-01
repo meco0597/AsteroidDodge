@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AsteroidDodge.Models;
 using AsteroidDodge.Models.Store;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using static AsteroidDodge.Models.Store.StoreModel;
 
 namespace AsteroidDodge.Controllers
 {
+    [Authorize]
     public class StoreController : Controller
     {
         private readonly AsteroidDodgeContext _context;
@@ -47,11 +49,11 @@ namespace AsteroidDodge.Controllers
         /// <summary>
         /// Helper method to adjust a user's coins 
         /// </summary>
-        /// <param name="user"></param>
         /// <param name="deltaCoins"></param>
         [HttpPost]
-        public IActionResult AdjustCoins(AsteroidUser user, int deltaCoins)
+        public IActionResult AdjustCoins(int deltaCoins)
         {
+            AsteroidUser user = GetCurrentUser();
             user.Coins += deltaCoins;
             if (user.Coins < 0)
                 user.Coins = 0;
@@ -80,7 +82,7 @@ namespace AsteroidDodge.Controllers
                 curUser.Coins >= shipSkin.SkinCost)
             {
                 // Adjust users coins and add ship to database
-                AdjustCoins(curUser, shipSkin.SkinCost);
+                AdjustCoins(shipSkin.SkinCost);
 
                 OwnedShip purchasedShip = new OwnedShip { AsteroidUser = curUser, ShipSkinId = shipSkin.ShipSkinId };
                 _context.OwnedShips.Add(purchasedShip);
@@ -112,7 +114,7 @@ namespace AsteroidDodge.Controllers
                 curUser.Coins >= backgroundSkin.SkinCost)
             {
                 // Adjust users coins and add ship to database
-                AdjustCoins(curUser, backgroundSkin.SkinCost);
+                AdjustCoins(backgroundSkin.SkinCost);
 
                 OwnedBackground purchasedBackground = new OwnedBackground { AsteroidUser = curUser, BackgroundSkinId = backgroundSkin.BackgroundSkinId };
                 _context.OwnedBackgrounds.Add(purchasedBackground);
@@ -213,7 +215,6 @@ namespace AsteroidDodge.Controllers
                 StoreShip ss = new StoreShip { ShipSkin = ship, IsPurchased = isPurchased};
                 storeShips.Add(ss);
             }
-
 
             // Get all of the user's owned background skin objects
             List<OwnedBackground> ownedBkgnds = _context.OwnedBackgrounds
