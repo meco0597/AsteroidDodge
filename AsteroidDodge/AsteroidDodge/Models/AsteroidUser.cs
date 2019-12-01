@@ -17,17 +17,24 @@ namespace AsteroidDodge.Models
         /// </summary>
         public int Coins { get; set; }
 
-        ///// <summary>
-        ///// Last selected ship
-        ///// </summary>
-        //[NotMapped]
-        //public Skin CurrentShip { get; set; }
 
-        ///// <summary>
-        ///// Last selected background
-        ///// </summary>
-        //[NotMapped]
-        //public Skin CurrentBackground { get; set; } 
+        public int CurrentShipId { get; set; }
+
+        /// <summary>
+        /// Last selected ship
+        /// </summary>
+        [NotMapped]
+        [ForeignKey("CurrentShipId")]
+        public ShipSkin CurrentShip { get; set; }
+
+        public int CurrentBackgrounId { get; set; }
+
+        /// <summary>
+        /// Last selected background
+        /// </summary>
+        [NotMapped]
+        [ForeignKey("CurrentBackgroundId")]
+        public BackgroundSkin CurrentBackground { get; set; }
 
         /// <summary>
         /// List of all ships owned by the player

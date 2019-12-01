@@ -3,16 +3,21 @@
 @{
     ViewData["Title"] = "Index";
 }
-<head>
-    <title>Store.</title>
-    <meta name="author" content="Samuel Bridge">
-    <meta name="description" content="Asteroid Dodge">
-    <meta name="keywords" content="HTML,CSS">
-</head>
+    <head>
+        <title>Store.</title>
+        <meta name="author" content="Samuel Bridge">
+        <meta name="description" content="Asteroid Dodge">
+        <meta name="keywords" content="HTML,CSS">
+        <script  type="text/javascript">
+            window.addEventListener('load', function () {
+                $('.skin-select').selectable();
+            });
+        </script>
+    </head>
 
 <h1>Store</h1>
 
-<table class="table">
+<table id="skin-table" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>
@@ -21,31 +26,30 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            @foreach (var ship in Model.StoreShips)
-            {
-                <td>
-                    <div class="ship-container">
-                        <img src="@ship.ShipSkin.SkinImgLocation" alt="@ship.ShipSkin.SkinName" />
-                    </div>
-                    @if(ship.IsPurchased)
-                    {
+        @foreach (var ship in Model.StoreShips)
+        {
+        <tr class="skin-select">
+            <td>
+                <div class="ship-container">
+                    <img src="@ship.ShipSkin.SkinImgLocation" alt="@ship.ShipSkin.SkinName" />
+                </div>
+                @if (ship.IsPurchased)
+                {
                     <div class="custom-control custom-switch">
                         <input type="checkbox" onclick="skinchange(@ship.ShipSkin.ShipSkinId)" class="custom-control-input" id="">
                         <label class="custom-control-label" for=""></label>
                     </div>
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     <div class="">
                         <label>@ship.ShipSkin.SkinCost Coins</label>
                         <button class="btn btn-outline-success my-2 my-sm-0" type="button">Purchase</button>
                     </div>
-                    }
-                </td>
-
-            }
+                }
+            </td>
         </tr>
+        }
     </tbody>
 </table>
 
@@ -91,17 +95,18 @@
 </table>
 
 <script type="text/javascript">
-    (function() {
+    //function() {
 
-    var img = document.getElementById('container').firstChild;
-    img.onload = function() {
-        if(img.height > img.width) {
-            img.height = '100%';
-            img.width = 'auto';
-        }
-    };
+    //var img = $('.ship-container').firstChild;
+    //img.onload = function() {
+    //    if(img.height > img.width) {
+    //        img.height = '100%';
+    //        img.width = 'auto';
+    //    }
+    //};
 
-    }());
+
+    //};
 </script>
 
 

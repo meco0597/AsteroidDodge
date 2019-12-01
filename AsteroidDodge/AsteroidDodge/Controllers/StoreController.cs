@@ -28,7 +28,12 @@ namespace AsteroidDodge.Controllers
         /// <returns></returns>
         public AsteroidUser GetCurrentUser()
         {
+            // Fetch user with included ship/background meta data
             return _userManager.Users
+                    .Include(u => u.OwnedShips)
+                    .Include(u => u.OwnedBackgrounds)
+                    .Include(u => u.CurrentShip)
+                    .Include(u => u.CurrentBackground)
                     .FirstOrDefault(u => u.Email == HttpContext.User.Identity.Name);
         }
 
@@ -90,7 +95,103 @@ namespace AsteroidDodge.Controllers
                 result = true;
             }
 
-            return new JsonResult(new { success = result });
+            return new JsonResult(new { success = result, ship = shipSkin});
+        }
+
+        /// <summary>
+        /// POST: /Store/PurchaseBackground
+        /// </summary>
+        /// <param name="backgroundSkinName"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult PurchaseBackground(string backgroundSkinName)
+        {
+            bool result = false;
+
+            BackgroundSkin backgroundSkin = _context.BackgroundSkins.FirstOrDefault(s => s.SkinName == backgroundSkinName);
+            AsteroidUser curUser = GetCurrentUser();
+
+            if (backgroundSkin != null &&
+                curUser != null &&
+                curUser.Coins >= backgroundSkin.SkinCost)
+            {
+                // Adjust users coins and add ship to database
+                AdjustCoins(curUser, backgroundSkin.SkinCost);
+
+                OwnedBackground purchasedBackground = new OwnedBackground { AsteroidUser = curUser, BackgroundSkinId = backgroundSkin.BackgroundSkinId };
+                _context.OwnedBackgrounds.Add(purchasedBackground);
+                _context.Users.Update(curUser);
+                _context.SaveChanges();
+
+                // Succeeded purchasing
+                result = true;
+            }
+
+            return new JsonResult(new { success = result, background = backgroundSkin });
+        }
+
+        /// <summary>
+        /// POST: /Store/SetCurrentShip
+        /// 
+        /// Sets the ship of the current user
+        /// </summary>
+        /// <param name="shipSkinName"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult SetCurrentShip(string shipSkinName)
+        {
+            bool result = false;
+
+            ShipSkin shipSkin = _context.ShipSkins.FirstOrDefault(s => s.SkinName == shipSkinName);
+            AsteroidUser curUser = GetCurrentUser();
+
+            // Check if skin and user are valid. Lastly, verify that user actually owns this skin
+            if (shipSkin != null &&
+                curUser != null &&
+                curUser.OwnedShips.ToList().Exists(os => os.ShipSkinId == shipSkin.ShipSkinId)) 
+            {
+                // Update and save user's current ship
+                curUser.CurrentShipId = shipSkin.ShipSkinId;
+                _context.Users.Update(curUser);
+                _context.SaveChanges();
+
+                // Succeeded purchasing
+                result = true;
+            }
+
+            return new JsonResult(new { success = result, ship = shipSkin });
+        }
+
+        /// <summary>
+        /// POST: /Store/SetCurrentBackground
+        /// 
+        /// Sets the background of the current user
+        /// </summary>
+        /// <param name="backgroundSkinName"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult SetCurrentBackground(string backgroundSkinName)
+        {
+            bool result = false;
+
+            BackgroundSkin backgroundSkin = _context.BackgroundSkins.FirstOrDefault(s => s.SkinName == backgroundSkinName);
+            AsteroidUser curUser = GetCurrentUser();
+
+            // Check if skin and user are valid. Lastly, verify that user actually owns this skin
+            if (backgroundSkin != null &&
+                curUser != null &&
+                curUser.OwnedBackgrounds.ToList().Exists(os => os.BackgroundSkinId == backgroundSkin.BackgroundSkinId)) 
+            {
+                // Update and save user's current background
+                curUser.CurrentBackgrounId = backgroundSkin.BackgroundSkinId;
+                _context.Users.Update(curUser);
+                _context.SaveChanges();
+
+                // Succeeded purchasing
+                result = true;
+            }
+
+            return new JsonResult(new { success = result, background = backgroundSkin });
         }
 
 
