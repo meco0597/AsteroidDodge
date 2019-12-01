@@ -30,10 +30,6 @@ namespace AsteroidDodge.Controllers
         {
             // Fetch user with included ship/background meta data
             return _userManager.Users
-                    .Include(u => u.OwnedShips)
-                    .Include(u => u.OwnedBackgrounds)
-                    .Include(u => u.CurrentShip)
-                    .Include(u => u.CurrentBackground)
                     .FirstOrDefault(u => u.Email == HttpContext.User.Identity.Name);
         }
 
