@@ -44,30 +44,6 @@ namespace AsteroidDodge.Controllers
         // ==================================================================================
         // POST METHODS 
         // ==================================================================================
-        /// <summary>
-        /// POST: /Store/AddUserScore
-        /// 
-        /// Helper method to add a new user score 
-        /// </summary>
-        /// <param name="score"></param>
-        [HttpPost]
-        public IActionResult AddUserScore(int score)
-        {
-            bool result = false;
-            AsteroidUser user = GetCurrentUser();
-
-            // TODO: check if user actually finished a game?
-            if(user != null)
-            {
-                Leaderboard leadboardEntry = new Leaderboard { AsteroidUserId = user.Id, Score = score };
-                _context.Leaderboard.Add(leadboardEntry);
-                _context.SaveChanges();
-
-                result = true;
-            }
-
-            return new JsonResult(new { success = result});
-        }
 
 
         /// <summary>
@@ -85,7 +61,7 @@ namespace AsteroidDodge.Controllers
             {
                 user.Coins += deltaCoins;
                 if (user.Coins < 0)
-                    user.Coins = 0;
+                    return new JsonResult(new { success = result});
 
                 _context.Users.Update(user);
                 _context.SaveChanges();
@@ -230,11 +206,15 @@ namespace AsteroidDodge.Controllers
         {
             AsteroidUser user = GetCurrentUser();
 
+            // Check if null 
+            if (user == null)
+                return Redirect("Identity/Account/Login");
+
             // Get all of the user's owned ship objects
             List<OwnedShip> ownedShips = _context.OwnedShips
-                .Include(os => os.ShipSkin)
-                .Where(os => os.AsteroidUserId == user.Id)
-                .ToList();
+            .Include(os => os.ShipSkin)
+            .Where(os => os.AsteroidUserId == user.Id)
+            .ToList();
 
             // Next loop through and add ships
             List<StoreShip> storeShips = new List<StoreShip>();
