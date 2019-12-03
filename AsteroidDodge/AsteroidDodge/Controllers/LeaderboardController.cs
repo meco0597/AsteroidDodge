@@ -63,7 +63,7 @@ namespace AsteroidDodge.Controllers
             // Generate ordered leaderboard
             List<Leaderboard> lb = _context.Leaderboard
                                     .Include(lb => lb.AsteroidUser)
-                                    .OrderBy(l => l.Score)
+                                    .OrderByDescending(l => l.Score)
                                     .Take(100) // limit to 100
                                     .ToList();
             return View(lb);

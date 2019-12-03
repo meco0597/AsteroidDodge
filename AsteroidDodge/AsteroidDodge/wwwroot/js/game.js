@@ -135,14 +135,18 @@ function onStartButtonClick() {
     }
 
     var shipImg = new Image();
-    //shipImg.src = "../images/s1.png";
-    //shipImg.src = "../images/s2.png";
-    //shipImg.src = "../images/s3.png";
-    //shipImg.src = "../images/s4.png";
-    //shipImg.src = "../images/s5.png";
-    //shipImg.src = "../images/s6.png";
-    shipImg.src = "../images/s7.png";
 
+    $.ajax({
+        url: "/Home/GetUserShip",
+        method: "GET",
+    }).done(function (result) {
+        shipImg.src = result.imageSrc;
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.log("failed: ");
+        console.log(jqXHR);
+        console.log(textStatus);
+        console.log(errorThrown);
+    });
 
     var explosion1 = new Image();
     explosion1.src = "../images/e1.png";
@@ -293,6 +297,7 @@ function checkCollisions() {
         if (checkSingleCollision(player.x, player.y, player.width, player.height, astroid.x, astroid.y, astroid.size, astroid.size, 30)) {
             gameLoop = false;
             explosionSound.play();
+
             // Store all of the appropriate information to the database
             $.ajax({
                 url: "/Store/AdjustCoins",
@@ -300,6 +305,19 @@ function checkCollisions() {
                 data: { deltaCoins: currentCrystals }
             }).done(function (result) {
                 console.log("Successfully posted Crystal amount: " + currentCrystals);
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.log("failed: ");
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+            });
+
+            $.ajax({
+                url: "/Leaderboard/AddUserScore",
+                method: "POST",
+                data: { score: currentScore }
+            }).done(function (result) {
+                console.log("Successfully posted score amount: " + currentScore);
             }).fail(function (jqXHR, textStatus, errorThrown) {
                 console.log("failed: ");
                 console.log(jqXHR);
