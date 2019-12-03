@@ -21,6 +21,7 @@ namespace AsteroidDodge.Models
 
         public DbSet<ShipSkin> ShipSkins { get; set; }
         public DbSet<BackgroundSkin> BackgroundSkins { get; set; }
+        public DbSet<Leaderboard> Leaderboard { get; set; }
 
 
         public DbSet<OwnedShip> OwnedShips { get; set; }
