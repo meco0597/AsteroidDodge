@@ -1,45 +1,22 @@
 ﻿<Properties StartupConfiguration="{8A4DA392-5DAE-42F5-A27D-8088172C1C90}|Default">
   <MonoDevelop.Ide.ItemProperties.AsteroidDodge PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AsteroidDodge/Models/Store/StoreModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AsteroidDodge/Controllers/StoreController.cs">
     <Files>
-      <File FileName="AsteroidDodge/Views/Home/Index.cshtml" Line="26" Column="2" />
-      <File FileName="AsteroidDodge/Views/Shared/_Layout.cshtml" Line="54" Column="22" />
-      <File FileName="AsteroidDodge/wwwroot/js/game.js" Line="317" Column="32" />
-      <File FileName="AsteroidDodge/wwwroot/css/style.css" />
-      <File FileName="AsteroidDodge/wwwroot/js/window.js" Line="1" Column="1" />
-      <File FileName="AsteroidDodge/Controllers/LeaderboardController.cs" Line="18" Column="105" />
-      <File FileName="AsteroidDodge/Controllers/HomeController.cs" Line="57" Column="67" />
-      <File FileName="AsteroidDodge/Views/Store/Index.cshtml" Line="42" Column="18" />
-      <File FileName="AsteroidDodge/Models/Skin.cs" Line="1" Column="1" />
-      <File FileName="AsteroidDodge/wwwroot/js/store.js" Line="1" Column="1" />
-      <File FileName="AsteroidDodge/wwwroot/js/site.js" Line="1" Column="1" />
-      <File FileName="AsteroidDodge/Controllers/StoreController.cs" Line="27" Column="1" />
-      <File FileName="AsteroidDodge/Views/Shared/_LoginPartial.cshtml" Line="23" Column="5" />
+      <File FileName="AsteroidDodge/wwwroot/js/store.js" Line="31" Column="1" />
+      <File FileName="AsteroidDodge/Controllers/StoreController.cs" Line="96" Column="35" />
+      <File FileName="AsteroidDodge/Views/Store/Index.cshtml" Line="40" Column="93" />
       <File FileName="AsteroidDodge/Models/AsteroidUser.cs" Line="1" Column="1" />
-      <File FileName="AsteroidDodge/Models/OwnedSkin.cs" Line="23" Column="1" />
-      <File FileName="AsteroidDodge/Views/Leaderboard/Index.cshtml" Line="30" Column="9" />
-      <File FileName="AsteroidDodge/Models/Leaderboard.cs" Line="1" Column="1" />
-      <File FileName="AsteroidDodge/Models/ErrorViewModel.cs" Line="1" Column="1" />
-      <File FileName="AsteroidDodge/Models/Store/StoreModel.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="AsteroidDodge" expanded="True">
             <Node name="AsteroidDodge" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Database" expanded="True" />
-              <Node name="Migrations" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="Store" expanded="True">
-                  <Node name="StoreModel.cs" selected="True" />
-                </Node>
+              <Node name="Controllers" expanded="True">
+                <Node name="StoreController.cs" selected="True" />
               </Node>
-              <Node name="Properties" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
-                <Node name="Leaderboard" expanded="True" />
-                <Node name="Shared" expanded="True" />
                 <Node name="Store" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
@@ -54,7 +31,12 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/sambridge/Projects/AsteroidDodge/AsteroidDodge/AsteroidDodge/Controllers/StoreController.cs" relfile="AsteroidDodge/Controllers/StoreController.cs" line="152" column="1" />
+      <Breakpoint file="/Users/sambridge/Projects/AsteroidDodge/AsteroidDodge/AsteroidDodge/Controllers/StoreController.cs" relfile="AsteroidDodge/Controllers/StoreController.cs" line="158" column="1" />
+      <Breakpoint file="/Users/sambridge/Projects/AsteroidDodge/AsteroidDodge/AsteroidDodge/Controllers/StoreController.cs" relfile="AsteroidDodge/Controllers/StoreController.cs" line="164" column="1" />
+      <Breakpoint file="/Users/sambridge/Projects/AsteroidDodge/AsteroidDodge/AsteroidDodge/Controllers/StoreController.cs" relfile="AsteroidDodge/Controllers/StoreController.cs" line="85" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

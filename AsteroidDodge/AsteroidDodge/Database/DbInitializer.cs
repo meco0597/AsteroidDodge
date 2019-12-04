@@ -23,12 +23,12 @@ namespace AsteroidDodge.Database
 
         private static ShipSkin[] SKINS =
         {
-            new ShipSkin {ShipSkinId = 2, SkinCost = 100, SkinName = "Purple Fury", SkinImgLocation = "~/images/s2~png"},
-            new ShipSkin {ShipSkinId = 3, SkinCost = 250, SkinName = "Dark Thunder", SkinImgLocation = "~/images/s3~png"},
-            new ShipSkin {ShipSkinId = 4, SkinCost = 500, SkinName = "Yellow Falcon", SkinImgLocation = "~/images/s4~png"},
-            new ShipSkin {ShipSkinId = 5, SkinCost = 800, SkinName = "Red Tiger", SkinImgLocation = "~/images/s5~png"},
-            new ShipSkin {ShipSkinId = 6, SkinCost = 1200, SkinName = "Sapphire Shark", SkinImgLocation = "~/images/s6~png"},
-            new ShipSkin {ShipSkinId = 7, SkinCost = 2000, SkinName = "Millennium Falcon", SkinImgLocation = "~/images/s7~png"}
+            new ShipSkin {ShipSkinId = 2, SkinCost = 100, SkinName = "Purple Fury", SkinImgLocation = "./images/s2.png"},
+            new ShipSkin {ShipSkinId = 3, SkinCost = 250, SkinName = "Dark Thunder", SkinImgLocation = "./images/s3.png"},
+            new ShipSkin {ShipSkinId = 4, SkinCost = 500, SkinName = "Yellow Falcon", SkinImgLocation = "./images/s4.png"},
+            new ShipSkin {ShipSkinId = 5, SkinCost = 800, SkinName = "Red Tiger", SkinImgLocation = "./images/s5.png"},
+            new ShipSkin {ShipSkinId = 6, SkinCost = 1200, SkinName = "Sapphire Shark", SkinImgLocation = "./images/s6.png"},
+            new ShipSkin {ShipSkinId = 7, SkinCost = 2000, SkinName = "Millennium Falcon", SkinImgLocation = "./images/s7.png"}
         };
 
         internal static Task Initialize(AsteroidDodgeContext context, UserManager<AsteroidDodgeContext> userManager)

@@ -92,16 +92,19 @@ namespace AsteroidDodge.Controllers
                 // Adjust users coins and add ship to database
                 AdjustCoins(shipSkin.SkinCost);
 
-                OwnedShip purchasedShip = new OwnedShip { AsteroidUser = curUser, ShipSkinId = shipSkin.ShipSkinId };
+                OwnedShip purchasedShip = new OwnedShip { AsteroidUser = curUser, ShipSkinId = shipSkin.ShipSkinId};
                 _context.OwnedShips.Add(purchasedShip);
                 _context.Users.Update(curUser);
                 _context.SaveChanges();
 
                 // Succeeded purchasing
-                result = true;
+                return new JsonResult(new { success = result, ship = shipSkin });
             }
-
-            return new JsonResult(new { success = result, ship = shipSkin});
+            else
+            {
+                return BadRequest(new JsonResult(new
+                { success = false, message = "Not enough coins." }));
+            }
         }
 
         /// <summary>
