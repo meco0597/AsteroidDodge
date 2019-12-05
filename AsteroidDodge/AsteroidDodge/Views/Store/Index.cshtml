@@ -8,28 +8,19 @@
     <meta name="author" content="Samuel Bridge">
     <meta name="description" content="Asteroid Dodge">
     <meta name="keywords" content="HTML,CSS">
-    <link rel="stylesheet"  href="~/css/store.css"/>
+    <link rel="stylesheet" href="~/css/store.css" />
 </head>
 
-<h1>Store</h1>
-
-<table id="skin-table1" class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>
-                Skins
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var ship in Model.StoreShips)
-        {
-        <tr class="@(ship.IsPurchased ? "skin-select" : "")">
-            <td>
-                <div class="ship-container">
-                    <img src="@ship.ShipSkin.SkinImgLocation" alt="@ship.ShipSkin.SkinName" />
-                </div>
-
+<h1 class="text-white">Store</h1>
+<hr />
+<h2 class="text-white">Ships</h2>
+<div class="card-group">
+    @foreach (var ship in Model.StoreShips)
+    {
+        <div class="card text-white bg-dark">
+            <img class="card-img-top" src="@ship.ShipSkin.SkinImgLocation" alt="@ship.ShipSkin.SkinName" />
+            <div class="card-body">
+                <h6 class="card-title">@ship.ShipSkin.SkinName</h6>
                 @if (ship.IsPurchased)
                 {
                     <div class="custom-control custom-switch">
@@ -40,33 +31,25 @@
                 else
                 {
                     <div class="">
-                        <label>@ship.ShipSkin.SkinCost Crystals</label>
-                        <input type ="button" class="btn btn-outline-success my-2 my-sm-0" onclick="purchaseShip('@ship.ShipSkin.SkinName')" value="Purchase">
+                        <label>@ship.ShipSkin.SkinCost <img src="~/images/crystal.png" width="20" height="20" id="comet" class="d-inline-block" alt=""></label> <br />
+                        <input type="button" class="btn btn-outline-success my-2 my-sm-0" onclick="purchaseShip('@ship.ShipSkin.SkinName')" value="Purchase">
                     </div>
                 }
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+            </div>
+        </div>
+    }
+</div>
 
-<table  id="skin-table2" class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>
-                Maps
-            </th>
-        </tr>
-    </thead>
-    <tbody>
+<hr />
+<h2 class="text-white">Galaxies</h2>
+<div class="card-group">
+
     @foreach (var background in Model.StoreBackgrounds)
     {
-        <tr class="@(background.IsPurchased ? "skin-select" : "")">
-            <td>
-                <div class="background-container">
-                    <img class="galaxy" src="@background.BackgroundSkin.SkinImgLocation" alt="@background.BackgroundSkin.SkinName" />
-                </div>
-
+        <div class="card text-white bg-dark">
+            <img class="galaxy card-img-top" src="@background.BackgroundSkin.SkinImgLocation" alt="@background.BackgroundSkin.SkinName" />
+            <div class="card-body">
+                <h6 class="card-title">@background.BackgroundSkin.SkinName</h6>
                 @if (background.IsPurchased)
                 {
                     <div class="custom-control custom-switch">
@@ -77,19 +60,18 @@
                 else
                 {
                     <div class="">
-                        <label>@background.BackgroundSkin.SkinCost Crystals</label>
-                        <input type ="button" class="btn btn-outline-success my-2 my-sm-0" onclick="purchaseBackground('@background.BackgroundSkin.SkinName')" value="Purchase">
+                        <label>@background.BackgroundSkin.SkinCost <img src="~/images/crystal.png" width="20" height="20" id="comet" class="d-inline-block" alt=""></label> <br />
+                        <input type="button" class="btn btn-outline-success my-2 my-sm-0" onclick="purchaseBackground('@background.BackgroundSkin.SkinName')" value="Purchase">
                     </div>
                 }
-            </td>
-        </tr>
+            </div>
+        </div>
+
     }
-    </tbody>
-</table>
+</div>
 
 @section Scripts {
-    <script src="~/js/store.js">
-    </script>
+    <script src="~/js/store.js"></script>
 }
 
 
