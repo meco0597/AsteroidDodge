@@ -26,7 +26,7 @@
         {
         <tr class="@(ship.IsPurchased ? "skin-select" : "")">
             <td>
-                <div class="ship-container" id="container">
+                <div class="ship-container">
                     <img src="@ship.ShipSkin.SkinImgLocation" alt="@ship.ShipSkin.SkinName" />
                 </div>
 
@@ -63,8 +63,8 @@
     {
         <tr class="@(background.IsPurchased ? "skin-select" : "")">
             <td>
-                <div class="background-container" id="container">
-                    <img src="@background.BackgroundSkin.SkinImgLocation" alt="@background.BackgroundSkin.SkinName" />
+                <div class="background-container">
+                    <img class="galaxy" src="@background.BackgroundSkin.SkinImgLocation" alt="@background.BackgroundSkin.SkinName" />
                 </div>
 
                 @if (background.IsPurchased)

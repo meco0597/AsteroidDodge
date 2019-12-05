@@ -33,7 +33,7 @@ namespace AsteroidDodge.Controllers
             // Fetch user with included ship/background meta data
             AsteroidUser curUser = _userManager.Users
                 .FirstOrDefault(u => u.Email == HttpContext.User.Identity.Name);
-                
+
 
             if (curUser != null)
             {
@@ -47,7 +47,7 @@ namespace AsteroidDodge.Controllers
 
         public IActionResult Index()
         {
-            return View("Index",GetCurrentBackground());
+            return View("Index", GetCurrentBackground());
         }
 
         public IActionResult Privacy()
@@ -63,7 +63,9 @@ namespace AsteroidDodge.Controllers
         {
             // Fetch user with included ship/background meta data
             return _userManager.Users
-                    .FirstOrDefault(u => u.Email == HttpContext.User.Identity.Name);
+                .Include(u => u.OwnedShips)
+                .Include(u => u.OwnedBackgrounds)
+                .FirstOrDefault(u => u.Email == HttpContext.User.Identity.Name);
         }
 
         /// <summary>
@@ -76,14 +78,9 @@ namespace AsteroidDodge.Controllers
 
             if (user != null)
             {
-                ShipSkin currSkin = user.CurrentShip;
-                if (currSkin == null)
-                {
-                    return new JsonResult(new { success = true, imageSrc = "../images/s1.png" });
-                }
-                string shipSrc = currSkin.SkinImgLocation;
-                return new JsonResult(new { success = true, imageSrc = shipSrc });
-            } else
+                return new JsonResult(new { success = true, imageSrc = "../images/s" + user.CurrentShipId + ".png" });
+            }
+            else
             {
                 return new JsonResult(new { success = true, imageSrc = "../images/s1.png" });
             }

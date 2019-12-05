@@ -7,6 +7,7 @@ var gameLoop;
 var currentScore;
 var firstTime = true;
 var explosionSound;
+var currShipPath;
 
 // Event listeners for the key functions
 window.addEventListener('keyup', function (event) { Key.onKeyup(event); }, false);
@@ -48,6 +49,19 @@ function onLoad() {
     ctx = canvas.getContext('2d');
     explosionSound = new sound("../sounds/explosion.mp3");
     crystalSound = new sound("../sounds/crystal.mp3");
+
+    //Load the ship image src
+    $.ajax({
+        url: "/Home/GetUserShip",
+        method: "GET",
+    }).done(function (result) {
+        currShipPath = result.imageSrc;
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.log("failed: ");
+        console.log(jqXHR);
+        console.log(textStatus);
+        console.log(errorThrown);
+    });
 }
 
 /*
@@ -135,18 +149,8 @@ function onStartButtonClick() {
     }
 
     var shipImg = new Image();
-
-    $.ajax({
-        url: "/Home/GetUserShip",
-        method: "GET",
-    }).done(function (result) {
-        shipImg.src = result.imageSrc;
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        console.log("failed: ");
-        console.log(jqXHR);
-        console.log(textStatus);
-        console.log(errorThrown);
-    });
+    shipImg.src = currShipPath;
+    
 
     var explosion1 = new Image();
     explosion1.src = "../images/e1.png";

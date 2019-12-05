@@ -5,3 +5,14 @@
     outline-style: solid;
     outline-color: blue;
 }
+
+.galaxy {
+    width: 300px;
+    height: 250px;
+    padding: 10px;
+}
+
+.ship-container img {
+    width: 50px;
+    height: 50px;
+}

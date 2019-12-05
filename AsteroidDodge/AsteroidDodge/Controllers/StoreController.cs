@@ -135,10 +135,12 @@ namespace AsteroidDodge.Controllers
                 _context.SaveChanges();
 
                 // Succeeded purchasing
-                result = true;
+                return new JsonResult(new { success = result, background = backgroundSkin });
+            } else
+            {
+                return BadRequest(new JsonResult(new
+                { success = false, message = "Not enough coins." }));
             }
-
-            return new JsonResult(new { success = result, background = backgroundSkin });
         }
 
         /// <summary>
@@ -163,6 +165,7 @@ namespace AsteroidDodge.Controllers
             {
                 // Update and save user's current ship
                 curUser.CurrentShipId = shipSkin.ShipSkinId;
+                curUser.CurrentShip = shipSkin;
                 _context.Users.Update(curUser);
                 _context.SaveChanges();
 
