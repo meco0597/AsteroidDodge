@@ -16,7 +16,7 @@ namespace AsteroidDodge.Database
 
         private static AsteroidUser[] USERS =
         {
-            new AsteroidUser{ UserName = "professor_jim@cs.utah.edu", Email = "professor_jim@cs.utah.edu", CurrentBackgrounId = 2},
+            new AsteroidUser{ UserName = "professor_jim@cs.utah.edu", Email = "professor_jim@cs.utah.edu"},
             new AsteroidUser{ UserName = "professor_mary@cs.utah.edu", Email = "professor_mary@cs.utah.edu"},
             new AsteroidUser{ UserName = "professor_danny@cs.utah.edu", Email = "professor_danny@cs.utah.edu"}
         };
@@ -35,7 +35,9 @@ namespace AsteroidDodge.Database
         {
             new BackgroundSkin {BackgroundSkinId = 0, SkinName = "Default", SkinCost = 0, SkinImgLocation = "/images/b1.jpg"},
             new BackgroundSkin {BackgroundSkinId = 1, SkinName = "Galactic Edros", SkinCost = 10, SkinImgLocation = "/images/b2.jpg"},
-            new BackgroundSkin {BackgroundSkinId = 2, SkinName = "Natalist Kapta", SkinCost = 25, SkinImgLocation = "/images/b3.jpg"}
+            new BackgroundSkin {BackgroundSkinId = 2, SkinName = "Natalist Kapta", SkinCost = 25, SkinImgLocation = "/images/b3.jpg"},
+            new BackgroundSkin {BackgroundSkinId = 3, SkinName = "Nebula", SkinCost = 50, SkinImgLocation = "/images/b4.jpg"},
+            new BackgroundSkin {BackgroundSkinId = 4, SkinName = "Earth", SkinCost = 100, SkinImgLocation = "/images/b5.jpg"}
         };
 
 

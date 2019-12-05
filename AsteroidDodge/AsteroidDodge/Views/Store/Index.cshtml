@@ -13,7 +13,7 @@
 
 <h1>Store</h1>
 
-<table id="skin-table" class="table table-bordered table-hover">
+<table id="skin-table1" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>
@@ -50,7 +50,7 @@
     </tbody>
 </table>
 
-<table class="table">
+<table  id="skin-table2" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>
@@ -63,15 +63,15 @@
     {
         <tr class="@(background.IsPurchased ? "skin-select" : "")">
             <td>
-                <div class="ship-container" id="container">
+                <div class="background-container" id="container">
                     <img src="@background.BackgroundSkin.SkinImgLocation" alt="@background.BackgroundSkin.SkinName" />
                 </div>
 
                 @if (background.IsPurchased)
                 {
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="backgroundChange('@background.BackgroundSkin.SkinName')" class="custom-control-input" id="@background.BackgroundSkin.BackgroundSkinId">
-                        <label class="custom-control-label" for="@background.BackgroundSkin.BackgroundSkinId"></label>
+                        <input type="checkbox" onclick="backgroundChange('@background.BackgroundSkin.SkinName')" class="custom-control-input" id="@background.BackgroundSkin.SkinName">
+                        <label class="custom-control-label" for="@background.BackgroundSkin.SkinName"></label>
                     </div>
                 }
                 else
@@ -88,7 +88,8 @@
 </table>
 
 @section Scripts {
-    <script src="~/js/store.js"></script>
+    <script src="~/js/store.js">
+    </script>
 }
 
 
