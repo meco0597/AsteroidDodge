@@ -16,7 +16,7 @@
         @foreach (Leaderboard lb in Model)
         {
             count++;
-            var name = lb.AsteroidUser.UserName;
+            var name = lb.AsteroidUser.FirstName;
             var score = lb.Score;
 
             <tr>

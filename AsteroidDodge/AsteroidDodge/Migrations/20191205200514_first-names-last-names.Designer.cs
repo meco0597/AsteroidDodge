@@ -3,14 +3,16 @@ using System;
 using AsteroidDodge.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AsteroidDodge.Migrations
 {
     [DbContext(typeof(AsteroidDodgeContext))]
-    partial class AsteroidDodgeContextModelSnapshot : ModelSnapshot
+    [Migration("20191205200514_first-names-last-names")]
+    partial class firstnameslastnames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

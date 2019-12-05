@@ -10,30 +10,34 @@ namespace AsteroidDodge.Database
     public class DbInitializer
     {
         /// <summary>
-        /// Default ship acessor
+        /// Default ship and background accessors
         /// </summary
-        public static readonly ShipSkin DEFAULT_SHIP = new ShipSkin { ShipSkinId = 1, SkinCost = 0, SkinName = "Default Ship", SkinImgLocation = "./images/s1.png" };
+        public static readonly ShipSkin DEFAULT_SHIP = new ShipSkin { ShipSkinId = 0, SkinCost = 0, SkinName = "Default Ship", SkinImgLocation = "./images/s1.png" };
+        public static readonly BackgroundSkin DEFAULT_BACKGROUND = new BackgroundSkin { BackgroundSkinId = 0, SkinName = "Default", SkinCost = 0, SkinImgLocation = "/images/b1.jpg" };
 
         private static AsteroidUser[] USERS =
         {
-            new AsteroidUser{ UserName = "professor_jim@cs.utah.edu", Email = "professor_jim@cs.utah.edu"},
-            new AsteroidUser{ UserName = "professor_mary@cs.utah.edu", Email = "professor_mary@cs.utah.edu"},
-            new AsteroidUser{ UserName = "professor_danny@cs.utah.edu", Email = "professor_danny@cs.utah.edu"}
+            new AsteroidUser{ FirstName = "Jim", UserName = "professor_jim@cs.utah.edu", Email = "professor_jim@cs.utah.edu", },
+            new AsteroidUser{ FirstName = "Mary", UserName = "professor_mary@cs.utah.edu", Email = "professor_mary@cs.utah.edu"},
+            new AsteroidUser{ FirstName = "Danny", UserName = "professor_danny@cs.utah.edu", Email = "professor_danny@cs.utah.edu"},
+            new AsteroidUser{ FirstName = "Ryan", UserName = "ryandougherty25@gmail.com", Email = "ryandougherty25@gmail.com" },
+            new AsteroidUser{ FirstName = "Joe", UserName = "Joe@Joe.com", Email = "Joe@Joe.com" }
         };
 
         private static ShipSkin[] SKINS =
         {
-            new ShipSkin {ShipSkinId = 2, SkinCost = 100, SkinName = "Purple Fury", SkinImgLocation = "/images/s2.png"},
-            new ShipSkin {ShipSkinId = 3, SkinCost = 250, SkinName = "Dark Thunder", SkinImgLocation = "/images/s3.png"},
-            new ShipSkin {ShipSkinId = 4, SkinCost = 500, SkinName = "Yellow Falcon", SkinImgLocation = "/images/s4.png"},
-            new ShipSkin {ShipSkinId = 5, SkinCost = 800, SkinName = "Red Tiger", SkinImgLocation = "/images/s5.png"},
-            new ShipSkin {ShipSkinId = 6, SkinCost = 1200, SkinName = "Sapphire Shark", SkinImgLocation = "/images/s6.png"},
-            new ShipSkin {ShipSkinId = 7, SkinCost = 2000, SkinName = "Millennium Falcon", SkinImgLocation = "/images/s7.png"}
+            DEFAULT_SHIP,
+            new ShipSkin {ShipSkinId = 1, SkinCost = 100, SkinName = "Purple Fury", SkinImgLocation = "/images/s2.png"},
+            new ShipSkin {ShipSkinId = 2, SkinCost = 250, SkinName = "Dark Thunder", SkinImgLocation = "/images/s3.png"},
+            new ShipSkin {ShipSkinId = 3, SkinCost = 500, SkinName = "Yellow Falcon", SkinImgLocation = "/images/s4.png"},
+            new ShipSkin {ShipSkinId = 4, SkinCost = 800, SkinName = "Red Tiger", SkinImgLocation = "/images/s5.png"},
+            new ShipSkin {ShipSkinId = 5, SkinCost = 1200, SkinName = "Sapphire Shark", SkinImgLocation = "/images/s6.png"},
+            new ShipSkin {ShipSkinId = 6, SkinCost = 2000, SkinName = "Millennium Falcon", SkinImgLocation = "/images/s7.png"}
         };
 
         private static BackgroundSkin[] BCKGRDSKIN =
         {
-            new BackgroundSkin {BackgroundSkinId = 0, SkinName = "Default", SkinCost = 0, SkinImgLocation = "/images/b1.jpg"},
+            DEFAULT_BACKGROUND,
             new BackgroundSkin {BackgroundSkinId = 1, SkinName = "Galactic Edros", SkinCost = 10, SkinImgLocation = "/images/b2.jpg"},
             new BackgroundSkin {BackgroundSkinId = 2, SkinName = "Natalist Kapta", SkinCost = 25, SkinImgLocation = "/images/b3.jpg"},
             new BackgroundSkin {BackgroundSkinId = 3, SkinName = "Nebula", SkinCost = 50, SkinImgLocation = "/images/b4.jpg"},
@@ -54,9 +58,6 @@ namespace AsteroidDodge.Database
         {
             // Check to make sure db is properly created
             context.Database.EnsureCreated();
-
-            if (!context.ShipSkins.Contains(DEFAULT_SHIP))
-                context.ShipSkins.Add(DEFAULT_SHIP);
 
             // Loop through and add all skins
             foreach(ShipSkin skin in SKINS)

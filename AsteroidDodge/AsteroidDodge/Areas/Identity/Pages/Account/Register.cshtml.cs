@@ -14,23 +14,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using AsteroidDodge.Database;
 
 namespace AsteroidDodge.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
+        private readonly AsteroidDodgeContext _context;
         private readonly SignInManager<AsteroidUser> _signInManager;
         private readonly UserManager<AsteroidUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
+            AsteroidDodgeContext context,
             UserManager<AsteroidUser> userManager,
             SignInManager<AsteroidUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
+            _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
@@ -46,6 +50,14 @@ namespace AsteroidDodge.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            [Required]
+            [Display(Name = "First Name")]
+            public string FirstName{ get; set; }
+
+            [Required]
+            [Display(Name = "Last Name")]
+            public string LastName{ get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -75,11 +87,26 @@ namespace AsteroidDodge.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new AsteroidUser { UserName = Input.Email, Email = Input.Email };
+                var user = new AsteroidUser {   UserName = Input.Email, 
+                                                Email = Input.Email, 
+                                                FirstName = Input.FirstName, 
+                                                LastName = Input.LastName };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    // Set first own ship and background on register
+                    OwnedShip firstShip = new OwnedShip { AsteroidUserId = user.Id, ShipSkinId = DbInitializer.DEFAULT_SHIP.ShipSkinId};
+                    OwnedBackground firstBackground = new OwnedBackground{ AsteroidUserId = user.Id, BackgroundSkinId = DbInitializer.DEFAULT_BACKGROUND.BackgroundSkinId};
+
+                    _context.OwnedShips.Add(firstShip);
+                    _context.OwnedBackgrounds.Add(firstBackground);
+
+                    _context.SaveChanges();
+
+
                     _logger.LogInformation("User created a new account with password.");
+
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
