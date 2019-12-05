@@ -1,6 +1,7 @@
 ﻿body {
 }
 
-.skin-select
-{
+.skin-select.active {
+    outline-style: solid;
+    outline-color: blue;
 }

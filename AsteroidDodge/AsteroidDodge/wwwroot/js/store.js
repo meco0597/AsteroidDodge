@@ -1,4 +1,8 @@
-﻿function purchaseShip(shipSkinName)
+﻿$('#skin-table').on('click', '.skin-select', function (e) {
+    $(this).addClass('active').siblings().removeClass('active');
+});
+
+function purchaseShip(shipSkinName)
 {
     $.ajax({
 

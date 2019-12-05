@@ -32,6 +32,8 @@ namespace AsteroidDodge.Controllers
         {
             // Fetch user with included ship/background meta data
             return _userManager.Users
+                    .Include(u => u.OwnedShips)
+                    .Include(u => u.OwnedBackgrounds)
                     .FirstOrDefault(u => u.Email == HttpContext.User.Identity.Name);
         }
 
@@ -90,9 +92,9 @@ namespace AsteroidDodge.Controllers
                 curUser.Coins >= shipSkin.SkinCost)
             {
                 // Adjust users coins and add ship to database
-                AdjustCoins(shipSkin.SkinCost);
+                AdjustCoins(-shipSkin.SkinCost);
 
-                OwnedShip purchasedShip = new OwnedShip { AsteroidUser = curUser, ShipSkinId = shipSkin.ShipSkinId};
+                OwnedShip purchasedShip = new OwnedShip { AsteroidUserId = curUser.Id, ShipSkinId = shipSkin.ShipSkinId};
                 _context.OwnedShips.Add(purchasedShip);
                 _context.Users.Update(curUser);
                 _context.SaveChanges();
@@ -125,7 +127,7 @@ namespace AsteroidDodge.Controllers
                 curUser.Coins >= backgroundSkin.SkinCost)
             {
                 // Adjust users coins and add ship to database
-                AdjustCoins(backgroundSkin.SkinCost);
+                AdjustCoins(-backgroundSkin.SkinCost);
 
                 OwnedBackground purchasedBackground = new OwnedBackground { AsteroidUser = curUser, BackgroundSkinId = backgroundSkin.BackgroundSkinId };
                 _context.OwnedBackgrounds.Add(purchasedBackground);

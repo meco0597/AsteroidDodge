@@ -3,17 +3,13 @@
 @{
     ViewData["Title"] = "Index";
 }
-    <head>
-        <title>Store.</title>
-        <meta name="author" content="Samuel Bridge">
-        <meta name="description" content="Asteroid Dodge">
-        <meta name="keywords" content="HTML,CSS">
-        <script  type="text/javascript">
-            window.addEventListener('load', function () {
-                $('.skin-select').selectable();
-            });
-        </script>
-    </head>
+<head>
+    <title>Store.</title>
+    <meta name="author" content="Samuel Bridge">
+    <meta name="description" content="Asteroid Dodge">
+    <meta name="keywords" content="HTML,CSS">
+    <link rel="stylesheet"  href="~/css/store.css"/>
+</head>
 
 <h1>Store</h1>
 
@@ -28,11 +24,12 @@
     <tbody>
         @foreach (var ship in Model.StoreShips)
         {
-        <tr class="skin-select">
+        <tr class="@(ship.IsPurchased ? "skin-select" : "")">
             <td>
                 <div class="ship-container" id="container">
                     <img src="@ship.ShipSkin.SkinImgLocation" alt="@ship.ShipSkin.SkinName" />
                 </div>
+
                 @if (ship.IsPurchased)
                 {
                     <div class="custom-control custom-switch">
@@ -96,7 +93,6 @@
 
 @section Scripts {
     <script src="~/js/store.js"></script>
-    <!-- <script src="~/js/window.js"></script> -->
 }
 
 
