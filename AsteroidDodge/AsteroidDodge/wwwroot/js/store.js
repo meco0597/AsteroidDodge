@@ -2,6 +2,60 @@
     $(this).addClass('active').siblings().removeClass('active');
 });
 
+function purchaseBackground(backgroundSkinName) {
+    $.ajax({
+
+        method: "POST",
+
+        url: "/Store/PurchaseBackground",
+        data: {
+            backgroundSkinName: backgroundSkinName
+        }
+
+    }).done(function (result) {
+        Swal.fire(
+            'Success!',
+            'Background purchased',
+            'success'
+        )
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        Swal.fire({
+            type: 'error',
+            title: 'Purchase Failed',
+            text: 'Not enough coins',
+        })
+    }).always(function () {
+        console.log("always")
+    });
+}
+
+function backgroundChange(backgroundSkinName) {
+    $.ajax({
+
+        method: "POST",
+
+        url: "/Store/SetCurrentBackground",
+        data: { 
+            backgroundSkinName: backgroundSkinName
+        }
+
+    }).done(function (result) {
+        Swal.fire(
+            'Success!',
+            'Background changed',
+            'success'
+        )
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        Swal.fire({
+            type: 'error',
+            title: 'Change failed',
+            text: 'Server Error',
+        })
+    }).always(function () {
+        console.log("always")
+    });
+}
+
 function purchaseShip(shipSkinName)
 {
     $.ajax({

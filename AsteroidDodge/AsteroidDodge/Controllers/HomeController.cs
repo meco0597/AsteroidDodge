@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AsteroidDodge.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace AsteroidDodge.Controllers
 {
@@ -23,9 +24,30 @@ namespace AsteroidDodge.Controllers
             _userManager = userManager;
         }
 
+        /// <summary>
+        /// Helper method to get current user with ship and background data fetched
+        /// </summary>
+        /// <returns></returns>
+        public string GetCurrentBackground()
+        {
+            // Fetch user with included ship/background meta data
+            AsteroidUser curUser = _userManager.Users
+                .FirstOrDefault(u => u.Email == HttpContext.User.Identity.Name);
+                
+
+            if (curUser != null)
+            {
+                return "../images/b" + (curUser.CurrentBackgrounId + 1) + ".jpg";
+            }
+            else
+            {
+                return "../images/b1.jpg";
+            }
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View("Index",GetCurrentBackground());
         }
 
         public IActionResult Privacy()

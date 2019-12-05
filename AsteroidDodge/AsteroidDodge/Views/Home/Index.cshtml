@@ -1,7 +1,13 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.EntityFrameworkCore
+@model string
+@{
     ViewData["Title"] = "Home Page";
 }
 
+<head>
+
+</head>
 
 <div class="body-projects">
     <!-- Game -->
@@ -22,5 +28,9 @@
 <!-- Javascript files-->
 @section Scripts {
     <script src="~/js/game.js"></script>
+    <script>
+        document.documentElement.style
+            .setProperty('--CurrentBackground',"url( @Model)");
+    </script>
     <!-- <script src="~/js/window.js"></script> -->
 }

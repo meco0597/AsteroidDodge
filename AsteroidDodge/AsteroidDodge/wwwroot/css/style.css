@@ -1,4 +1,6 @@
-
+:root {
+    --CurrentBackground: url(../images/b1.jpg);
+}
 .card-body {
 	text-align: center;
 }
@@ -43,7 +45,7 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
-	background-image: url(../images/game_background.jpg);
+    background-image: var(--CurrentBackground);
 }
 
 .navbar-dark {

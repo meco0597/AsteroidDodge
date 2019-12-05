@@ -59,35 +59,31 @@
         </tr>
     </thead>
     <tbody>
-            <tr>
-                <td>
-                    <div id="container2">
-                        <img src="~/images/game_background.jpg" alt="" />
-                    </div>
+    @foreach (var background in Model.StoreBackgrounds)
+    {
+        <tr class="@(background.IsPurchased ? "skin-select" : "")">
+            <td>
+                <div class="ship-container" id="container">
+                    <img src="@background.BackgroundSkin.SkinImgLocation" alt="@background.BackgroundSkin.SkinName" />
+                </div>
+
+                @if (background.IsPurchased)
+                {
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="">
-                        <label class="custom-control-label" for=""></label>
+                        <input type="checkbox" onclick="backgroundChange('@background.BackgroundSkin.SkinName')" class="custom-control-input" id="@background.BackgroundSkin.BackgroundSkinId">
+                        <label class="custom-control-label" for="@background.BackgroundSkin.BackgroundSkinId"></label>
                     </div>
-                </td>
-                <td>
-                    <div id="container2">
-                        <img src="~/images/game_background.jpg" alt="" />
+                }
+                else
+                {
+                    <div class="">
+                        <label>@background.BackgroundSkin.SkinCost Crystals</label>
+                        <input type ="button" class="btn btn-outline-success my-2 my-sm-0" onclick="purchaseBackground('@background.BackgroundSkin.SkinName')" value="Purchase">
                     </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="">
-                        <label class="custom-control-label" for=""></label>
-                    </div>
-                </td>
-                <td>
-                    <div id="container2">
-                        <img src="~/images/game_background.jpg" alt="" />
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="">
-                        <label class="custom-control-label" for=""></label>
-                    </div>
-                </td>
-            </tr>
+                }
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
 
