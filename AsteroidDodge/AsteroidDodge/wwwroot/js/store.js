@@ -42,11 +42,7 @@ function backgroundChange(backgroundSkinName) {
         }
 
     }).done(function (result) {
-        Swal.fire(
-            'Success!',
-            'Background changed',
-            'success'
-        )
+        console.log("Background changed.");
     }).fail(function (jqXHR, textStatus, errorThrown) {
         Swal.fire({
             type: 'error',
@@ -100,11 +96,7 @@ function shipChange(shipSkinName) {
         }
 
     }).done(function (result) {
-        Swal.fire(
-            'Success!',
-            'Ship changed',
-            'success'
-        )
+        console.log("Ship changed.");
     }).fail(function (jqXHR, textStatus, errorThrown) {
         Swal.fire({
             type: 'error',
