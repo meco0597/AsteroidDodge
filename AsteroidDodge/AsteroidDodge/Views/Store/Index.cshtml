@@ -13,7 +13,7 @@
 
 <h1>Store</h1>
 
-<table id="skin-table" class="table table-bordered table-hover">
+<table id="skin-table" class="table table-bordered table-hover" >
     <thead>
         <tr>
             <th>
@@ -24,7 +24,11 @@
     <tbody>
         @foreach (var ship in Model.StoreShips)
         {
-        <tr class="@(ship.IsPurchased ? "skin-select" : "")">
+        <!-- Check to see if this is our first ship -->
+        bool isCurrentShip = Model.User.CurrentShipId == ship.ShipSkin.ShipSkinId;
+
+        <!-- Set's row to selectable if the ship is purchased -->
+        <tr class="@(ship.IsPurchased? "skin-select " : " ") @( isCurrentShip? "active" : "")" onclick="shipChange('@ship.ShipSkin.SkinName', $(this))">
             <td>
                 <div class="ship-container" id="container">
                     <img src="@ship.ShipSkin.SkinImgLocation" alt="@ship.ShipSkin.SkinName" />
@@ -32,9 +36,8 @@
 
                 @if (ship.IsPurchased)
                 {
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="shipChange('@ship.ShipSkin.SkinName')" class="custom-control-input" id="@ship.ShipSkin.ShipSkinId">
-                        <label class="custom-control-label" for="@ship.ShipSkin.ShipSkinId"></label>
+                    <div class="font-italic text-black-50">
+                        Purchased
                     </div>
                 }
                 else

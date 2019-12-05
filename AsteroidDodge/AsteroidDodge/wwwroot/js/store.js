@@ -1,6 +1,10 @@
-﻿$('#skin-table').on('click', '.skin-select', function (e) {
-    $(this).addClass('active').siblings().removeClass('active');
-});
+﻿//$('#skin-table').on('click', '.skin-select', function (e) {
+//    $(this).addClass('active').siblings().removeClass('active');
+//});
+
+function setElementActive(element) {
+    element.addClass('active').siblings().removeClass('active');
+}
 
 function purchaseShip(shipSkinName)
 {
@@ -19,6 +23,7 @@ function purchaseShip(shipSkinName)
           'Ship purchased',
           'success'
         )
+
     }).fail(function(jqXHR, textStatus, errorThrown) {
         Swal.fire({
           type: 'error',
@@ -30,7 +35,7 @@ function purchaseShip(shipSkinName)
     });
 }
 
-function shipChange(shipSkinName) {
+function shipChange(shipSkinName, tableRow) {
     $.ajax({
 
         method: "POST",
@@ -41,11 +46,15 @@ function shipChange(shipSkinName) {
         }
 
     }).done(function (result) {
+        setElementActive(tableRow);
+
         Swal.fire(
             'Success!',
             'Ship changed',
             'success'
-        )
+        );
+
+
     }).fail(function (jqXHR, textStatus, errorThrown) {
         Swal.fire({
             type: 'error',
@@ -53,6 +62,5 @@ function shipChange(shipSkinName) {
             text: 'Server Error',
         })
     }).always(function () {
-        console.log("always")
     });
 }
