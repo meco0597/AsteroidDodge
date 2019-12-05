@@ -17,7 +17,9 @@ function purchaseBackground(backgroundSkinName) {
             'Success!',
             'Background purchased',
             'success'
-        )
+        ).then(() => {
+            window.location.reload(true);
+        })
     }).fail(function (jqXHR, textStatus, errorThrown) {
         Swal.fire({
             type: 'error',
@@ -72,14 +74,17 @@ function purchaseShip(shipSkinName)
           'Success!',
           'Ship purchased',
           'success'
-        )
+        ).then(() => {
+            window.location.reload(true);
+        })
     }).fail(function(jqXHR, textStatus, errorThrown) {
         Swal.fire({
           type: 'error',
           title: 'Purchase Failed',
           text: 'Not enough coins',
         })
-    }).always(function() {
+    }).always(function () {
+
         console.log("always")
     });
 }
