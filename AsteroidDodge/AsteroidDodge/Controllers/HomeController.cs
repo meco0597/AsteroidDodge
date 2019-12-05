@@ -78,7 +78,10 @@ namespace AsteroidDodge.Controllers
 
             if (user != null)
             {
-                return new JsonResult(new { success = true, imageSrc = "../images/s" + user.CurrentShipId + ".png" });
+                if (user.CurrentShipId != 0)
+                    return new JsonResult(new {success = true, imageSrc = "../images/s" + user.CurrentShipId + ".png"});
+                else
+                    return new JsonResult(new { success = true, imageSrc = "../images/s1.png" });
             }
             else
             {
