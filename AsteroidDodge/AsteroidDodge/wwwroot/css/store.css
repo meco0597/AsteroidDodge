@@ -1,6 +1,9 @@
 ﻿body {
 }
 
+.skin-select{
+    cursor: pointer;
+}
 .skin-select.active {
     outline-style: solid;
     outline-color: deepskyblue;

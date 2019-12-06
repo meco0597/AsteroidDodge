@@ -4,10 +4,6 @@
     element.find('.selected-text').show();
 }
 
-//$('#skin-table').on('click', '.skin-select', function (e) {
-//    setElementActive($(this));
-//});
-
 function purchaseBackground(backgroundSkinName) {
     $.ajax({
 
@@ -37,27 +33,30 @@ function purchaseBackground(backgroundSkinName) {
     });
 }
 
-function backgroundChange(backgroundSkinName) {
-    $.ajax({
+function backgroundChange(backgroundSkinName, tableRow) {
+    if (tableRow.hasClass('skin-select')) {
+        $.ajax({
 
-        method: "POST",
+            method: "POST",
 
-        url: "/Store/SetCurrentBackground",
-        data: { 
-            backgroundSkinName: backgroundSkinName
-        }
+            url: "/Store/SetCurrentBackground",
+            data: {
+                backgroundSkinName: backgroundSkinName
+            }
 
-    }).done(function (result) {
-        console.log("Background changed.");
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        Swal.fire({
-            type: 'error',
-            title: 'Change failed',
-            text: 'Server Error',
-        })
-    }).always(function () {
-        console.log("always")
-    });
+        }).done(function (result) {
+            setElementActive(tableRow);
+            console.log("Background changed.");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            Swal.fire({
+                type: 'error',
+                title: 'Change failed',
+                text: 'Server Error',
+            })
+        }).always(function () {
+            console.log("always")
+        });
+    }
 }
 
 

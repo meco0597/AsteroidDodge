@@ -27,10 +27,6 @@
                 <h6 class="card-title">@ship.ShipSkin.SkinName</h6>
                 @if (ship.IsPurchased)
                 {
-                    @*<div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="shipChange('@ship.ShipSkin.SkinName')" class="custom-control-input" id="@ship.ShipSkin.ShipSkinId">
-                        <label class="custom-control-label" for="@ship.ShipSkin.ShipSkinId"></label>
-                    </div>*@
                     <div class="font-italic text-white-50">
                         Purchased
                     </div>
@@ -56,20 +52,18 @@
 
     @foreach (var background in Model.StoreBackgrounds)
     {
-        var isCheckedGalaxy = "";
-        if (Model.User.CurrentBackgrounId == background.BackgroundSkin.BackgroundSkinId)
-        {
-            isCheckedGalaxy = "checked";
-        }
-        <div class="card text-white bg-dark">
+        <!-- Check to see if this is our first ship -->
+        bool isCurrentBackground = Model.User.CurrentBackgrounId == background.BackgroundSkin.BackgroundSkinId;
+
+        <!-- Set's row to selectable if the ship is purchased -->
+        <div class="m-1 card text-white bg-dark @(background.IsPurchased? "skin-select " : " ") @( isCurrentBackground? "active" : "")" onclick="backgroundChange('@background.BackgroundSkin.SkinName', $(this))">
             <img class="galaxy card-img-top" src="@background.BackgroundSkin.SkinImgLocation" alt="@background.BackgroundSkin.SkinName" />
             <div class="card-body">
                 <h6 class="card-title">@background.BackgroundSkin.SkinName</h6>
                 @if (background.IsPurchased)
                 {
-                    <div class="custom-control custom-switch">
-                        <input type="radio" name="Galaxies" onclick="backgroundChange('@background.BackgroundSkin.SkinName')" class="custom-control-input" id="@background.BackgroundSkin.SkinName" @isCheckedGalaxy>
-                        <label class="custom-control-label" for="@background.BackgroundSkin.SkinName"></label>
+                    <div class="font-italic text-white-50">
+                        Purchased
                     </div>
                 }
                 else
@@ -79,6 +73,9 @@
                         <input type="button" class="btn btn-outline-success my-2 my-sm-0" onclick="purchaseBackground('@background.BackgroundSkin.SkinName')" value="Purchase">
                     </div>
                 }
+                <dv class="selected-text" style="@(isCurrentBackground ? "" : "display:none;")">
+                    Selected
+                </dv>
             </div>
         </div>
 
