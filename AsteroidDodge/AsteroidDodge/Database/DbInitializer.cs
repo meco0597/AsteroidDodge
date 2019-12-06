@@ -12,7 +12,8 @@ namespace AsteroidDodge.Database
         /// <summary>
         /// Default ship acessor
         /// </summary
-        public static readonly ShipSkin DEFAULT_SHIP = new ShipSkin { ShipSkinId = 1, SkinCost = 0, SkinName = "Default Ship", SkinImgLocation = "./images/s1.png" };
+        public static readonly ShipSkin DEFAULT_SHIP = new ShipSkin { ShipSkinId = 0, SkinCost = 0, SkinName = "Default Ship", SkinImgLocation = "./images/s1.png" };
+        public static readonly BackgroundSkin DEFAULT_BACKGROUND = new BackgroundSkin { BackgroundSkinId = 0, SkinCost = 0, SkinName = "Default", SkinImgLocation = "./images/b1.jpg" };
 
         private static AsteroidUser[] USERS =
         {
@@ -23,17 +24,18 @@ namespace AsteroidDodge.Database
 
         private static ShipSkin[] SKINS =
         {
-            new ShipSkin {ShipSkinId = 2, SkinCost = 100, SkinName = "Purple Fury", SkinImgLocation = "/images/s2.png"},
-            new ShipSkin {ShipSkinId = 3, SkinCost = 250, SkinName = "Dark Thunder", SkinImgLocation = "/images/s3.png"},
-            new ShipSkin {ShipSkinId = 4, SkinCost = 500, SkinName = "Yellow Falcon", SkinImgLocation = "/images/s4.png"},
-            new ShipSkin {ShipSkinId = 5, SkinCost = 800, SkinName = "Red Tiger", SkinImgLocation = "/images/s5.png"},
-            new ShipSkin {ShipSkinId = 6, SkinCost = 1200, SkinName = "Sapphire Shark", SkinImgLocation = "/images/s6.png"},
-            new ShipSkin {ShipSkinId = 7, SkinCost = 2000, SkinName = "Millennium Falcon", SkinImgLocation = "/images/s7.png"}
+            DEFAULT_SHIP,
+            new ShipSkin {ShipSkinId = 1, SkinCost = 5, SkinName = "Purple Fury", SkinImgLocation = "/images/s2.png"},
+            new ShipSkin {ShipSkinId = 2, SkinCost = 10, SkinName = "Dark Thunder", SkinImgLocation = "/images/s3.png"},
+            new ShipSkin {ShipSkinId = 3, SkinCost = 30, SkinName = "Yellow Falcon", SkinImgLocation = "/images/s4.png"},
+            new ShipSkin {ShipSkinId = 4, SkinCost = 50, SkinName = "Red Tiger", SkinImgLocation = "/images/s5.png"},
+            new ShipSkin {ShipSkinId = 5, SkinCost = 75, SkinName = "Sapphire Shark", SkinImgLocation = "/images/s6.png"},
+            new ShipSkin {ShipSkinId = 6, SkinCost = 150, SkinName = "Millennium Falcon", SkinImgLocation = "/images/s7.png"}
         };
 
         private static BackgroundSkin[] BCKGRDSKIN =
         {
-            new BackgroundSkin {BackgroundSkinId = 0, SkinName = "Default", SkinCost = 0, SkinImgLocation = "/images/b1.jpg"},
+            DEFAULT_BACKGROUND,
             new BackgroundSkin {BackgroundSkinId = 1, SkinName = "Galactic Edros", SkinCost = 10, SkinImgLocation = "/images/b2.jpg"},
             new BackgroundSkin {BackgroundSkinId = 2, SkinName = "Natalist Kapta", SkinCost = 25, SkinImgLocation = "/images/b3.jpg"},
             new BackgroundSkin {BackgroundSkinId = 3, SkinName = "Nebula", SkinCost = 50, SkinImgLocation = "/images/b4.jpg"},
@@ -54,9 +56,6 @@ namespace AsteroidDodge.Database
         {
             // Check to make sure db is properly created
             context.Database.EnsureCreated();
-
-            if (!context.ShipSkins.Contains(DEFAULT_SHIP))
-                context.ShipSkins.Add(DEFAULT_SHIP);
 
             // Loop through and add all skins
             foreach(ShipSkin skin in SKINS)

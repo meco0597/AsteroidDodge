@@ -9,7 +9,6 @@
 
 *.db-shm
 *.db-wal
-*.db
 
 
 # Common node modules locations

@@ -14,23 +14,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using AsteroidDodge.Database;
 
 namespace AsteroidDodge.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
+        private readonly AsteroidDodgeContext _context;
         private readonly SignInManager<AsteroidUser> _signInManager;
         private readonly UserManager<AsteroidUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
+            AsteroidDodgeContext context,
             UserManager<AsteroidUser> userManager,
             SignInManager<AsteroidUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
+            _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
@@ -79,6 +83,15 @@ namespace AsteroidDodge.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    // Add starting ship and background when registering
+                    OwnedShip startShip = new OwnedShip { AsteroidUserId = user.Id, ShipSkinId = DbInitializer.DEFAULT_SHIP.ShipSkinId };
+                    OwnedBackground startBackground = new OwnedBackground { AsteroidUserId = user.Id, BackgroundSkinId = DbInitializer.DEFAULT_BACKGROUND.BackgroundSkinId };
+
+                    _context.OwnedShips.Add(startShip);
+                    _context.OwnedBackgrounds.Add(startBackground);
+
+                    _context.SaveChanges();
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
