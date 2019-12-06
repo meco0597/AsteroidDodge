@@ -56,6 +56,11 @@
 
     @foreach (var background in Model.StoreBackgrounds)
     {
+        var isCheckedGalaxy = "";
+        if (Model.User.CurrentBackgrounId == background.BackgroundSkin.BackgroundSkinId)
+        {
+            isCheckedGalaxy = "checked";
+        }
         <div class="card text-white bg-dark">
             <img class="galaxy card-img-top" src="@background.BackgroundSkin.SkinImgLocation" alt="@background.BackgroundSkin.SkinName" />
             <div class="card-body">
@@ -63,7 +68,7 @@
                 @if (background.IsPurchased)
                 {
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="backgroundChange('@background.BackgroundSkin.SkinName')" class="custom-control-input" id="@background.BackgroundSkin.SkinName">
+                        <input type="radio" name="Galaxies" onclick="backgroundChange('@background.BackgroundSkin.SkinName')" class="custom-control-input" id="@background.BackgroundSkin.SkinName" @isCheckedGalaxy>
                         <label class="custom-control-label" for="@background.BackgroundSkin.SkinName"></label>
                     </div>
                 }
