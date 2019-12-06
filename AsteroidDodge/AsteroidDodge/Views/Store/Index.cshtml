@@ -17,6 +17,11 @@
 <div class="card-group">
     @foreach (var ship in Model.StoreShips)
     {
+        var isChecked = "";
+        if (Model.User.CurrentShipId == ship.ShipSkin.ShipSkinId)
+        {
+            isChecked = "checked";
+        }
         <div class="card text-white bg-dark">
             <img class="card-img-top" src="@ship.ShipSkin.SkinImgLocation" alt="@ship.ShipSkin.SkinName" />
             <div class="card-body">
@@ -24,7 +29,7 @@
                 @if (ship.IsPurchased)
                 {
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="shipChange('@ship.ShipSkin.SkinName')" class="custom-control-input" id="@ship.ShipSkin.ShipSkinId">
+                        <input type="radio" name="Ships" onclick="shipChange('@ship.ShipSkin.SkinName')" class="custom-control-input" id="@ship.ShipSkin.ShipSkinId" @isChecked>
                         <label class="custom-control-label" for="@ship.ShipSkin.ShipSkinId"></label>
                     </div>
                 }
@@ -46,6 +51,11 @@
 
     @foreach (var background in Model.StoreBackgrounds)
     {
+        var isCheckedGalaxy = "";
+        if (Model.User.CurrentBackgrounId == background.BackgroundSkin.BackgroundSkinId)
+        {
+            isCheckedGalaxy = "checked";
+        }
         <div class="card text-white bg-dark">
             <img class="galaxy card-img-top" src="@background.BackgroundSkin.SkinImgLocation" alt="@background.BackgroundSkin.SkinName" />
             <div class="card-body">
@@ -53,7 +63,7 @@
                 @if (background.IsPurchased)
                 {
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" onclick="backgroundChange('@background.BackgroundSkin.SkinName')" class="custom-control-input" id="@background.BackgroundSkin.SkinName">
+                        <input type="radio" name="Galaxies" onclick="backgroundChange('@background.BackgroundSkin.SkinName')" class="custom-control-input" id="@background.BackgroundSkin.SkinName" @isCheckedGalaxy>
                         <label class="custom-control-label" for="@background.BackgroundSkin.SkinName"></label>
                     </div>
                 }
