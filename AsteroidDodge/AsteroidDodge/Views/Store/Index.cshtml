@@ -17,15 +17,22 @@
 <div class="card-group">
     @foreach (var ship in Model.StoreShips)
     {
-        <div class="card text-white bg-dark">
+        <!-- Check to see if this is our first ship -->
+        bool isCurrentShip = Model.User.CurrentShipId == ship.ShipSkin.ShipSkinId;
+
+        <!-- Set's row to selectable if the ship is purchased -->
+        <div class="m-1 card text-white bg-dark @(ship.IsPurchased? "skin-select " : " ") @( isCurrentShip? "active" : "")" onclick="shipChange('@ship.ShipSkin.SkinName', $(this))">
             <img class="card-img-top" src="@ship.ShipSkin.SkinImgLocation" alt="@ship.ShipSkin.SkinName" />
             <div class="card-body">
                 <h6 class="card-title">@ship.ShipSkin.SkinName</h6>
                 @if (ship.IsPurchased)
                 {
-                    <div class="custom-control custom-switch">
+                    @*<div class="custom-control custom-switch">
                         <input type="checkbox" onclick="shipChange('@ship.ShipSkin.SkinName')" class="custom-control-input" id="@ship.ShipSkin.ShipSkinId">
                         <label class="custom-control-label" for="@ship.ShipSkin.ShipSkinId"></label>
+                    </div>*@
+                    <div class="font-italic text-white-50">
+                        Purchased
                     </div>
                 }
                 else
@@ -35,6 +42,9 @@
                         <input type="button" class="btn btn-outline-success my-2 my-sm-0" onclick="purchaseShip('@ship.ShipSkin.SkinName')" value="Purchase">
                     </div>
                 }
+                <dv class="selected-text" style="@(isCurrentShip ? "" : "display:none;")">
+                    Selected
+                </dv>
             </div>
         </div>
     }
@@ -73,5 +83,6 @@
 @section Scripts {
     <script src="~/js/store.js"></script>
 }
+
 
 

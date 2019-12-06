@@ -1,6 +1,12 @@
-﻿$('#skin-table').on('click', '.skin-select', function (e) {
-    $(this).addClass('active').siblings().removeClass('active');
-});
+﻿function setElementActive(element) {
+    element.addClass('active').siblings().removeClass('active');
+    element.siblings().find('.selected-text').hide();
+    element.find('.selected-text').show();
+}
+
+//$('#skin-table').on('click', '.skin-select', function (e) {
+//    setElementActive($(this));
+//});
 
 function purchaseBackground(backgroundSkinName) {
     $.ajax({
@@ -54,6 +60,7 @@ function backgroundChange(backgroundSkinName) {
     });
 }
 
+
 function purchaseShip(shipSkinName)
 {
     $.ajax({
@@ -85,25 +92,29 @@ function purchaseShip(shipSkinName)
     });
 }
 
-function shipChange(shipSkinName) {
-    $.ajax({
+function shipChange(shipSkinName, tableRow) {
+    if (tableRow.hasClass('skin-select')) {
+        $.ajax({
 
-        method: "POST",
+            method: "POST",
 
-        url: "/Store/SetCurrentShip",
-        data: {
-            shipSkinName: shipSkinName
-        }
+            url: "/Store/SetCurrentShip",
+            data: {
+                shipSkinName: shipSkinName
+            }
 
-    }).done(function (result) {
-        console.log("Ship changed.");
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        Swal.fire({
-            type: 'error',
-            title: 'Change failed',
-            text: 'Server Error',
-        })
-    }).always(function () {
-        console.log("always")
-    });
+        }).done(function (result) {
+            setElementActive(tableRow);
+            console.log("Ship changed.");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            Swal.fire({
+                type: 'error',
+                title: 'Change failed',
+                text: 'Server Error',
+            })
+        }).always(function () {
+        });
+
+    }
+
 }

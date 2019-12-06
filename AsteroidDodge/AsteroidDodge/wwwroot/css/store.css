@@ -3,7 +3,7 @@
 
 .skin-select.active {
     outline-style: solid;
-    outline-color: blue;
+    outline-color: deepskyblue;
 }
 
 .galaxy {
@@ -19,6 +19,15 @@
 
 .card {
     padding: 10px;
+}
+
+.selected-text{
+    border-radius: 5px;
+    border: solid;
+    color: deepskyblue;
+    display: block;
+    margin-top: 30px;
+    padding: 5px 5px 5px 5px;
 }
 
 /*
