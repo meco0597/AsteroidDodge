@@ -5,6 +5,7 @@
     <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">User</th>
             <th scope="col">Score</th>
         </tr>
     </thead>
@@ -16,7 +17,7 @@
         @foreach (Leaderboard lb in Model)
         {
             count++;
-            var name = lb.AsteroidUser.UserName;
+            var name = lb.AsteroidUser.UserName.Substring(0, lb.AsteroidUser.UserName.LastIndexOf('@'));
             var score = lb.Score;
 
             <tr>
