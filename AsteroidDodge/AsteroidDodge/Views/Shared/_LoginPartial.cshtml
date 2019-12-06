@@ -9,7 +9,8 @@
 {
     AsteroidUser a = await UserManager.FindByNameAsync(User.Identity.Name); 
     <li class="nav-item">
-        <a id="manage" class="nav-link" asp-page="/Store/Index" title="Manage">@a.Coins <img src="~/images/crystal.png" width="20" height="20" id="comet" class="d-inline-block" alt=""></a>
+        <a id="user-crystals" class="nav-link d-inline-block" asp-controller="Store" asp-action="Index" title="Manage" style="padding-right:2px;">@a.Coins</a> 
+        <img src="~/images/crystal.png" width="20" height="20 id="comet" class=" d-inline-block" style="margin-bottom:8px; margin-right:8px;" alt="">
     </li>
     <li class="nav-item">
         <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>

@@ -316,6 +316,10 @@ function checkCollisions() {
                 console.log(errorThrown);
             });
 
+            // Set new crystal value in top UI
+            var newCrystals = parseInt($("#user-crystals").text(), 10) + currentCrystals;
+            $("#user-crystals").html(newCrystals);
+
             $.ajax({
                 url: "/Leaderboard/AddUserScore",
                 method: "POST",
