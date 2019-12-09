@@ -1,24 +1,18 @@
 ﻿<Properties StartupConfiguration="{8A4DA392-5DAE-42F5-A27D-8088172C1C90}|Default">
   <MonoDevelop.Ide.ItemProperties.AsteroidDodge PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AsteroidDodge/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AsteroidDodge/Controllers/OverviewController.cs">
     <Files>
-      <File FileName="AsteroidDodge/Views/Store/Index.cshtml" Line="91" Column="1" />
-      <File FileName="AsteroidDodge/wwwroot/css/site.css" />
-      <File FileName="AsteroidDodge/Controllers/StoreController.cs" />
-      <File FileName="AsteroidDodge/Views/Shared/_Layout.cshtml" />
-      <File FileName="AsteroidDodge/Views/Shared/_LoginPartial.cshtml" />
-      <File FileName="AsteroidDodge/Controllers/HomeController.cs" Line="82" Column="114" />
-      <File FileName="AsteroidDodge/Areas/Identity/Pages/Account/Register.cshtml" Line="26" Column="4" />
-      <File FileName="AsteroidDodge/Areas/Identity/Pages/Account/Login.cshtml" />
-      <File FileName="AsteroidDodge/Areas/Identity/Pages/Account/Logout.cshtml" />
-      <File FileName="AsteroidDodge/Areas/Identity/Pages/Account/ForgotPassword.cshtml" />
-      <File FileName="AsteroidDodge/Areas/Identity/Pages/Account/ConfirmEmail.cshtml" />
-      <File FileName="AsteroidDodge/Database/DbInitializer.cs" Line="96" Column="1" />
-      <File FileName="AsteroidDodge/wwwroot/css/store.css" />
       <File FileName="AsteroidDodge/wwwroot/js/store.js" Line="119" Column="2" />
-      <File FileName="AsteroidDodge/Areas/Identity/Pages/Account/_ViewImports.cshtml" Line="1" Column="1" />
-      <File FileName="AsteroidDodge/Models/AsteroidUser.cs" Line="1" Column="1" />
-      <File FileName="AsteroidDodge/Controllers/LeaderboardController.cs" Line="1" Column="1" />
+      <File FileName="AsteroidDodge/Controllers/StoreController.cs" Line="264" Column="1" />
+      <File FileName="AsteroidDodge/Views/Store/Index.cshtml" Line="1" Column="1" />
+      <File FileName="AsteroidDodge/Models/AsteroidUser.cs" />
+      <File FileName="AsteroidDodge/wwwroot/js/game.js" />
+      <File FileName="AsteroidDodge/Views/Overview/Index.cshtml" Line="22" Column="105" />
+      <File FileName="AsteroidDodge/Controllers/HomeController.cs" Line="12" Column="22" />
+      <File FileName="AsteroidDodge/Views/_ViewStart.cshtml" Line="1" Column="1" />
+      <File FileName="AsteroidDodge/Views/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="AsteroidDodge/Views/Shared/_Layout.cshtml" Line="55" Column="18" />
+      <File FileName="AsteroidDodge/Controllers/OverviewController.config" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,15 +22,7 @@
               <Node name="Controllers" expanded="True">
                 <Node name="HomeController.cs" selected="True" />
               </Node>
-              <Node name="Database" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
-                <Node name="Store" expanded="True" />
-              </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
                 <Node name="js" expanded="True" />
               </Node>
             </Node>
